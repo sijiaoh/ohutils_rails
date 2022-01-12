@@ -1,10 +1,10 @@
 class UserPolicy < ApplicationPolicy
   def index?
-    user.is_admin?
+    user&.is_admin?
   end
 
   def show?
-    user.is_admin? || user == record
+    user&.is_admin? || user == record
   end
 
   def create?
@@ -13,7 +13,7 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.is_admin?
+      if user&.is_admin?
         scope.all
       else
         scope.where(id: user.id)

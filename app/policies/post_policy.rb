@@ -12,11 +12,11 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user.is_admin? || user == record.user
+    user&.is_admin? || user == record.user
   end
 
   def destroy?
-    user.is_admin? || user == record.user
+    user&.is_admin? || user == record.user
   end
 
   class Scope < Scope
