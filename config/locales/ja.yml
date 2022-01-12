@@ -1,10 +1,13 @@
 ja:
   activerecord:
     models:
+      space: "スペース"
       post: "投稿"
     attributes:
       user:
         terms_of_service: "利用規約"
+      space:
+        name: "スペース名"
       post:
         title: "タイトル"
         content: "内容"
@@ -27,6 +30,13 @@ ja:
       title: "ユーザー一覧"
     new:
       title: "ユーザー登録"
+  spaces:
+    index:
+      title: "スペース一覧"
+    new:
+      title: "新規スペース"
+    edit:
+      title: "スペース編集"
   posts:
     index:
       title: "投稿一覧"

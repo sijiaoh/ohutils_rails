@@ -1,15 +1,9 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @space %>
-
-    <%= link_to 'Edit this space', edit_space_path(@space), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this space', space_path(@space), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to spaces', spaces_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<div>
+  <div class="scaffold-buttons my-default">
+    <%= link_to t("edit"), edit_space_path(@space), class: "button-primary" %>
+    <%= button_to t("destroy"), space_path(@space), method: :delete, class: "button-danger" %>
+    <%= link_to t("back_to_index"), spaces_path, class: "button-secondary" %>
   </div>
+
+  <%= render @space %>
 </div>
