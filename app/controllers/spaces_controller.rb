@@ -1,25 +1,23 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: %i[show edit update destroy]
 
-  # GET /spaces
   def index
-    @spaces = Space.all
+    @spaces = policy_scope(Space).all
+    authorize @spaces
   end
 
-  # GET /spaces/1
   def show; end
 
-  # GET /spaces/new
   def new
-    @space = Space.new
+    @space = authorize Space.new
+    skip_policy_scope
   end
 
-  # GET /spaces/1/edit
   def edit; end
 
-  # POST /spaces
   def create
-    @space = Space.new(space_params)
+    @space = authorize Space.new(space_params)
+    skip_policy_scope
 
     if @space.save
       redirect_to @space, notice: "Space was successfully created."
@@ -28,7 +26,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /spaces/1
   def update
     if @space.update(space_params)
       redirect_to @space, notice: "Space was successfully updated."
@@ -37,7 +34,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # DELETE /spaces/1
   def destroy
     @space.destroy
     redirect_to spaces_url, notice: "Space was successfully destroyed."
@@ -45,13 +41,11 @@ class SpacesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_space
-    @space = Space.find(params[:id])
+    @space = authorize policy_scope(Space).find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def space_params
-    params.require(:space).permit(:slug, :name)
+    params.require(:space).permit(:name)
   end
 end
