@@ -1,0 +1,3 @@
+<% if policy(user).show? %>
+  <%= link_to t("detail"), user, class: "button-primary" %>
+<% end %>

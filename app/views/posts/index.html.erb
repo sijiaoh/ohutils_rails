@@ -1,7 +1,7 @@
 <div>
   <div class="flex justify-between items-center">
     <h1 class="title my-default"><%= title t ".title" %></h1>
-    <%= link_to t("posts.new.title"), new_post_path, class: "button-primary" %>
+    <%= render "new_link" %>
   </div>
 
   <%= render partial: "index_post", collection: @posts, as: :post %>

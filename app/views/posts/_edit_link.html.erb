@@ -1,0 +1,3 @@
+<% if policy(post).edit? %>
+  <%= link_to t("edit"), edit_post_path(post), class: "button-primary" %>
+<% end %>

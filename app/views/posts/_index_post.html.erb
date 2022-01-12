@@ -2,7 +2,7 @@
   <div class="my-default font-bold"><%= post.title %></div>
 
   <div class="scaffold-buttons my-default">
-    <%= link_to t("detail"), post, class: "button-primary" %>
-    <%= link_to t("edit"), edit_post_path(post), class: "button-secondary" %>
+    <%= render "show_link", post: %>
+    <%= render "edit_link", post: %>
   </div>
 </div>

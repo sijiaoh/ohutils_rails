@@ -1,8 +1,8 @@
 <div>
   <div class="scaffold-buttons my-default">
-    <%= link_to t("edit"), edit_post_path(@post), class: "button-primary" %>
-    <%= button_to t("destroy"), post_path(@post), method: :delete, class: "button-danger" %>
-    <%= link_to t("back_to_index"), posts_path, class: "button-secondary" %>
+    <%= render "edit_link", post: @post %>
+    <%= render "destroy_button", post: @post %>
+    <%= render "back_to_index_link" %>
   </div>
 
   <%= render @post %>

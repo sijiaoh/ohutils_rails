@@ -1,0 +1,3 @@
+<% if policy(post).show? %>
+  <%= link_to t("detail"), post, class: "button-primary" %>
+<% end %>
