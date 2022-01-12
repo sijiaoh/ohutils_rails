@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :space do
-    slug { "MyString" }
-    name { "MyString" }
+    name { Faker::Book.title }
   end
 end
