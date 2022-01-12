@@ -1,0 +1,3 @@
+<% if policy(space).edit? %>
+  <%= link_to t("edit"), edit_space_path(space), class: "button-primary" %>
+<% end %>

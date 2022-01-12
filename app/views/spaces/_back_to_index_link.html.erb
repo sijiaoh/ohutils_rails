@@ -1,0 +1,3 @@
+<% if policy(:space).index? %>
+  <%= link_to t("back_to_index"), spaces_path, class: "button-secondary" %>
+<% end %>

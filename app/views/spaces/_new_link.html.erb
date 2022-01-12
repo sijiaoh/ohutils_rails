@@ -1,0 +1,3 @@
+<% if policy(:space).new? %>
+  <%= link_to t("spaces.new.title"), new_space_path, class: "button-primary" %>
+<% end %>

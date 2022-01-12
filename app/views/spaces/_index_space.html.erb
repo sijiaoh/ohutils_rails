@@ -2,7 +2,7 @@
   <div class="my-default font-bold"><%= space.name %></div>
 
   <div class="scaffold-buttons my-default">
-    <%= link_to t("detail"), space, class: "button-primary" %>
-    <%= link_to t("edit"), edit_space_path(space), class: "button-primary" %>
+    <%= render "show_link", space: %>
+    <%= render "edit_link", space: %>
   </div>
 </div>
