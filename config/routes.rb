@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spaces
   root "static_pages#home"
 
   get "sign_in", to: "session#new"
