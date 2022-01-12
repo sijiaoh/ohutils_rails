@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :spaces
   root "static_pages#home"
 
   get "sign_in", to: "session#new"
@@ -8,5 +7,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   resources :users, only: [:index, :show, :create]
+  resources :spaces, param: :slug
   resources :posts
 end

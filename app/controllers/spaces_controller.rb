@@ -42,7 +42,7 @@ class SpacesController < ApplicationController
   private
 
   def set_space
-    @space = authorize policy_scope(Space).find(params[:id])
+    @space = authorize policy_scope(Space).find_by!(slug: params[:slug])
   end
 
   def space_params
