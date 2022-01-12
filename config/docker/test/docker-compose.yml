@@ -1,24 +1,24 @@
 version: "3.8"
 services:
   db:
-    container_name: ellie_test_db
+    container_name: ohutils_test_db
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: password
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1
   selenium:
-    container_name: ellie_test_selenium
+    container_name: ohutils_test_selenium
     image: selenium/standalone-chrome:latest
   app:
-    container_name: ellie_test
-    image: ellie_test
+    container_name: ohutils_test
+    image: ohutils_test
     build:
       context: ../../..
       dockerfile: ./config/docker/test/Dockerfile
     environment:
       RAILS_ENV: test
-      ELLIE_DATABASE_HOST: db
+      OHUTILS_DATABASE_HOST: db
       SELENIUM_URL: http://selenium:4444/wd/hub
     depends_on:
       db:

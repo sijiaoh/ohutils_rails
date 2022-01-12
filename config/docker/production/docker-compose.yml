@@ -1,36 +1,36 @@
 version: "3"
 services:
   db:
-    container_name: ellie_production_db
+    container_name: ohutils_production_db
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ellie_production
-      MYSQL_USER: ellie
-      MYSQL_PASSWORD: ${ELLIE_DATABASE_PASSWORD}
+      MYSQL_DATABASE: ohutils_production
+      MYSQL_USER: ohutils
+      MYSQL_PASSWORD: ${OHUTILS_DATABASE_PASSWORD}
     volumes:
-      - ellie_production_db_data:/var/lib/mysql
+      - ohutils_production_db_data:/var/lib/mysql
   app:
-    container_name: ellie_production
-    image: ellie_production
+    container_name: ohutils_production
+    image: ohutils_production
     build:
       context: ../../..
       dockerfile: ./config/docker/production/Dockerfile
       args:
         - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
         - RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}
-        - ELLIE_DATABASE_PASSWORD=${ELLIE_DATABASE_PASSWORD}
+        - OHUTILS_DATABASE_PASSWORD=${OHUTILS_DATABASE_PASSWORD}
     environment:
       RAILS_ENV: production
       RAILS_SERVE_STATIC_FILES: "true"
-      ELLIE_DATABASE_HOST: db
-      ELLIE_DATABASE_PASSWORD: ${ELLIE_DATABASE_PASSWORD}
+      OHUTILS_DATABASE_HOST: db
+      OHUTILS_DATABASE_PASSWORD: ${OHUTILS_DATABASE_PASSWORD}
     volumes:
-      - ellie_production_log_data:/app/log
+      - ohutils_production_log_data:/app/log
     depends_on:
       - db
   https-portal:
-    container_name: ellie_production_https_portal
+    container_name: ohutils_production_https_portal
     image: steveltn/https-portal:1
     ports:
       - "80:80"
@@ -42,8 +42,8 @@ services:
       DOMAINS: "${DOMAIN} -> http://app:3000"
       STAGE: "production"
     volumes:
-      - ellie_production_https_portal_data:/var/lib/https-portal
+      - ohutils_production_https_portal_data:/var/lib/https-portal
 volumes:
-  ellie_production_log_data:
-  ellie_production_db_data:
-  ellie_production_https_portal_data:
+  ohutils_production_log_data:
+  ohutils_production_db_data:
+  ohutils_production_https_portal_data:

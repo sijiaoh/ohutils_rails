@@ -20,7 +20,7 @@ Bundler.require(*Rails.groups)
 
 require "./lib/utils"
 
-module Ellie
+module Ohutils
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
