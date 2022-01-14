@@ -6,8 +6,8 @@
   </div>
 
   <div class="my-default">
-    <div class="<%= wysiwyg_class %>">
+    <%= render "shared/wysiwyg_viewer" do %>
       <%== post.content %>
-    </div>
+    <% end %>
   </div>
 </div>

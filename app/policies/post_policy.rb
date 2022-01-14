@@ -1,6 +1,10 @@
 class PostPolicy < ApplicationPolicy
   def index?
-    true
+    return true if record.is_a? Symbol
+
+    record.all? do |post|
+      Pundit.policy(user, post).show?
+    end
   end
 
   def show?

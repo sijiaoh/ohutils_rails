@@ -1,8 +1,10 @@
 <div id="<%= dom_id post %>">
-  <div class="my-default font-bold"><%= post.title %></div>
-
-  <div class="scaffold-buttons my-default">
-    <%= render "show_link", space:, post: %>
-    <%= render "edit_link", space:, post: %>
+  <div class="border w-40 h-60">
+    <%= link_to [space, post], class: "vertical gap-0 w-full h-full" do %>
+      <div class="px-2 py-1 font-bold border"><%= post.title %></div>
+      <%= render "shared/wysiwyg_viewer", class_name: "overflow-hidden" do %>
+        <%== post.content %>
+      <% end %>
+    <% end %>
   </div>
 </div>

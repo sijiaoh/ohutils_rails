@@ -1,7 +1,10 @@
 <div id="<%= dom_id space %>">
   <h1 class="title my-default"><%= title space.name %></h1>
 
-  <h2 class="font-bold text-2xl"><%= t "posts.index.title" %></h2>
+  <div class="flex justify-between items-center my-default">
+    <h2 class="font-bold text-2xl"><%= t "posts.index.title" %></h2>
+    <%= render "posts/new_link", space: %>
+  </div>
 
   <turbo-frame id="posts" src="<%= space_posts_path space %>" target="_top"></turbo-frame>
 </div>
