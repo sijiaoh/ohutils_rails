@@ -1,9 +1,12 @@
-<div id="<%= dom_id post %>">
+<% class_name = class_names "select-none print:hidden": post.copy_protect %>
+<div id="<%= dom_id post %>" class="<%= class_name %>">
   <h1 class="title my-default"><%= title post.title %></h1>
 
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= t(post.published ? ".publishing" : ".unpublished") %></div>
-  </div>
+  <% if policy(post).edit? %>
+    <div class="horizontal my-default">
+      <div class="font-medium"><%= t(post.published ? ".publishing" : ".unpublished") %></div>
+    </div>
+  <% end %>
 
   <div class="my-default">
     <%= render "shared/wysiwyg_viewer" do %>

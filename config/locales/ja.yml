@@ -11,6 +11,7 @@ ja:
       post:
         title: "タイトル"
         content: "内容"
+        copy_protect: "コピープロテクト"
         published: "公開"
 
   title: "Ohutils"
