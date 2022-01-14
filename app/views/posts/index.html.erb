@@ -5,7 +5,7 @@
   </div>
 
   <turbo-frame id="posts">
-    <div class="horizontal gap-4 justify-center flex-wrap">
+    <div class="horizontal my-default gap-4 justify-center flex-wrap">
       <%= render partial: "index_post", collection: @posts, as: :post, locals: { space: @space } %>
     </div>
   </turbo-frame>
