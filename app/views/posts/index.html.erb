@@ -4,5 +4,7 @@
     <%= render "new_link", space: @space %>
   </div>
 
-  <%= render partial: "index_post", collection: @posts, as: :post, locals: { space: @space } %>
+  <turbo-frame id="posts">
+    <%= render partial: "index_post", collection: @posts, as: :post, locals: { space: @space } %>
+  </turbo-frame>
 </div>
