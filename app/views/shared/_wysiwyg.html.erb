@@ -8,7 +8,7 @@
       prism_theme_css,
     ].to_json
   %>"
-  class="<%= className %>"
+  class="<%= local_assigns[:class_name] %>"
 >
   <%= yield %>
 </div>
