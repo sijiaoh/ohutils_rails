@@ -3,6 +3,8 @@ class Space < ApplicationRecord
 
   before_save :generate_slug
 
+  has_many :posts, dependent: :destroy
+
   def to_param
     slug
   end

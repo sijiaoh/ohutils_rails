@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_101539) do
+ActiveRecord::Schema.define(version: 2022_01_14_085945) do
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2022_01_12_101539) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "space_id", null: false
+    t.index ["space_id"], name: "index_posts_on_space_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_101539) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "posts", "spaces"
   add_foreign_key "posts", "users"
   add_foreign_key "social_profiles", "users"
 end

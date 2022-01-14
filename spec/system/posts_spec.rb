@@ -1,8 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Posts", type: :system do
+  let(:space) { create :space }
+
   describe "index" do
-    let(:path) { posts_path }
+    let(:path) { space_posts_path space }
 
     include_examples "simple visit test"
   end
@@ -10,8 +12,8 @@ RSpec.describe "Posts", type: :system do
   describe "show" do
     include_context "when signed in"
 
-    let(:post) { create :post, user: current_user }
-    let(:path) { post_path(post) }
+    let(:post) { create :post, user: current_user, space: }
+    let(:path) { space_post_path space, post }
 
     include_examples "simple visit test"
   end
@@ -19,7 +21,7 @@ RSpec.describe "Posts", type: :system do
   describe "new" do
     include_context "when signed in"
 
-    let(:path) { new_post_path }
+    let(:path) { new_space_post_path space }
 
     include_examples "simple visit test"
   end
@@ -27,8 +29,8 @@ RSpec.describe "Posts", type: :system do
   describe "edit" do
     include_context "when signed in"
 
-    let(:post) { create :post, user: current_user }
-    let(:path) { edit_post_path(post) }
+    let(:post) { create :post, user: current_user, space: }
+    let(:path) { edit_space_post_path space, post }
 
     include_examples "simple visit test"
   end

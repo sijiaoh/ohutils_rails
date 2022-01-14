@@ -1,7 +1,7 @@
 <div>
   <h1 class="title my-default"><%= title t ".title" %></h1>
 
-  <%= render "form", post: @post %>
+  <%= render "form", space: @space, post: @post %>
 
-  <%= render "back_to_index_link" %>
+  <%= render "back_to_index_link", space: @space %>
 </div>

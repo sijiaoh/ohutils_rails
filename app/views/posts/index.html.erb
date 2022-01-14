@@ -1,8 +1,8 @@
 <div>
   <div class="flex justify-between items-center">
     <h1 class="title my-default"><%= title t ".title" %></h1>
-    <%= render "new_link" %>
+    <%= render "new_link", space: @space %>
   </div>
 
-  <%= render partial: "index_post", collection: @posts, as: :post %>
+  <%= render partial: "index_post", collection: @posts, as: :post, locals: { space: @space } %>
 </div>
