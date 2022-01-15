@@ -1,4 +1,4 @@
-namespace :db do
+namespace :db do # rubocop:disable Metrics/BlockLength
   id = Rails.application.class.module_parent.name.downcase
 
   def mysql_in_docker!(command)
@@ -18,5 +18,38 @@ namespace :db do
 
   task remove: :environment do
     mysql_in_docker! "remove #{id}"
+  end
+
+  task migrate_from_old_service: :environment do
+    user = User.first
+    space = Space.first
+
+    raise "Require an user and an space." if user.blank? || space.blank?
+
+    host = ENV["OLD_HOST"]
+    port = ENV["OLD_PORT"]
+    username = ENV["OLD_USERNAME"]
+    password = ENV["OLD_PASSWORD"]
+    database = ENV["OLD_DATABASE"]
+
+    client = Mysql2::Client.new(host:, port:, username:, password:, database:)
+
+    query = "select * from Post"
+    results = client.query(query)
+
+    results.each do |row|
+      content = row["text"]
+      Post.create!(
+        title: row["title"],
+        content:,
+        copy_protect: row["copyProtect"],
+        created_at: row["createdAt"].to_time.since(9.hours),
+        updated_at: row["updatedAt"].to_time.since(9.hours),
+        published: true,
+        markdown: true,
+        space:,
+        user:
+      )
+    end
   end
 end
