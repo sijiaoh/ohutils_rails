@@ -8,7 +8,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.blank?
+    !Rails.env.production?
   end
 
   class Scope < Scope
