@@ -18,7 +18,6 @@ services:
       dockerfile: ./config/docker/production/Dockerfile
       args:
         - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-        - RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}
         - OHUTILS_DATABASE_PASSWORD=${OHUTILS_DATABASE_PASSWORD}
     environment:
       RAILS_ENV: production
