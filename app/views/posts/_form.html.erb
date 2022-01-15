@@ -8,8 +8,12 @@
 
   <div class="vertical my-default">
     <%= form.label :content %>
-    <%= render "shared/wysiwyg", class_name: "min-h-[30rem]" do %>
-      <%= form.text_area :content %>
+    <% unless post.markdown? %>
+      <%= render "shared/wysiwyg", class_name: "min-h-[30rem]" do %>
+        <%= form.text_area :content %>
+      <% end %>
+    <% else %>
+      <%= form.text_area :content, class: "h-[32rem]" %>
     <% end %>
   </div>
 
