@@ -15,4 +15,13 @@
       <%== post.content %>
     <% end %>
   </div>
+
+  <div class="text-xs">
+    <%= t("created_at") %>:
+    <%= time_tag post.created_at %>
+  </div>
+  <div class="text-xs">
+    <%= t("updated_at") %>:
+    <%= time_tag post.updated_at %>
+  </div>
 </div>

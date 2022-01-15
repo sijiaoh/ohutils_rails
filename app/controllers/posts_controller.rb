@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = policy_scope(@space.posts).all.eager_load([:user])
+    @posts = policy_scope(@space.posts).order(created_at: :desc).all.eager_load([:user])
     authorize @posts
   end
 
