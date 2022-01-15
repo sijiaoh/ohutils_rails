@@ -6,5 +6,10 @@
     <%= form.text_field :name, class: "text-field" %>
   </div>
 
+  <div class="horizontal my-default">
+    <%= form.check_box :display_on_home %>
+    <%= form.label :display_on_home %>
+  </div>
+
   <%= form.submit class: "button-primary my-default" %>
 <% end %>

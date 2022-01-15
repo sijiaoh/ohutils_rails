@@ -1,3 +1,8 @@
 <div>
   <h1 class="title my-default"><%= t "title" %></h1>
+
+  <% if policy(:space).index? %>
+    <%= link_to t("spaces.index.title"), spaces_path, class: "button-primary" %>
+  <% end %>
+  <%= render partial: "spaces/index_space", collection: @spaces, as: :space %>
 </div>

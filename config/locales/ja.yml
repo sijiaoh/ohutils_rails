@@ -8,6 +8,7 @@ ja:
         terms_of_service: "利用規約"
       space:
         name: "スペース名"
+        display_on_home: "ホーム画面に表示"
       post:
         title: "タイトル"
         content: "内容"

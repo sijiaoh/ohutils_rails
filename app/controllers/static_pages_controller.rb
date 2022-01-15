@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_after_action :verify_policy_scoped
-
-  def home; end
+  def home
+    @spaces = policy_scope(Space).where(display_on_home: true)
+    skip_authorization if @spaces.blank?
+    @spaces.each do |space|
+      authorize space, :show?
+    end
+  end
 end

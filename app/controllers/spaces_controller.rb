@@ -46,6 +46,6 @@ class SpacesController < ApplicationController
   end
 
   def space_params
-    params.require(:space).permit(:name)
+    params.require(:space).permit(:name, :display_on_home)
   end
 end

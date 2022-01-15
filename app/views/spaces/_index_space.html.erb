@@ -1,8 +1,13 @@
 <div id="<%= dom_id space %>">
-  <div class="my-default font-bold"><%= space.name %></div>
+  <div class="horizontal my-default items-end gap-3">
+    <div class="font-bold"><%= space.name %></div>
+    <% if policy(space).edit? && space.display_on_home? %>
+      <div class="text-xs"><%= Space.human_attribute_name :display_on_home %></div>
+    <% end %>
+  </div>
 
   <div class="scaffold-buttons my-default">
-    <%= render "show_link", space: %>
-    <%= render "edit_link", space: %>
+    <%= render "spaces/show_link", space: %>
+    <%= render "spaces/edit_link", space: %>
   </div>
 </div>

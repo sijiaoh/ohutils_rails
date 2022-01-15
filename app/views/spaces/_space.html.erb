@@ -1,5 +1,11 @@
 <div id="<%= dom_id space %>">
-  <h1 class="title my-default"><%= title space.name %></h1>
+  <div class="horizontal items-end my-default gap-3">
+    <h1 class="title"><%= title space.name %></h1>
+
+    <% if space.display_on_home? %>
+      <div><%= Space.human_attribute_name :display_on_home %></div>
+    <% end %>
+  </div>
 
   <div class="flex justify-between items-center my-default">
     <h2 class="font-bold text-2xl"><%= t "posts.index.title" %></h2>
