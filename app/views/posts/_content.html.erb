@@ -1,7 +1,8 @@
+<% class_name = class_names local_assigns[:class_name], copy_protect_class(post) %>
 <% unless post.markdown? %>
-  <%= render "shared/wysiwyg_viewer", class_name: local_assigns[:class_name] do %>
+  <%= render "shared/wysiwyg_viewer", class_name: do %>
     <%== post.content %>
   <% end %>
 <% else %>
-  <%= render "shared/markdown_viewer", post:, class_name: local_assigns[:class_name] %>
+  <%= render "shared/markdown_viewer", post:, class_name: %>
 <% end %>
