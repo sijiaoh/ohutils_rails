@@ -25,25 +25,12 @@ services:
       RAILS_SERVE_STATIC_FILES: "true"
       OHUTILS_DATABASE_HOST: db
       OHUTILS_DATABASE_PASSWORD: ${OHUTILS_DATABASE_PASSWORD}
+    ports:
+      - ${PORT}:3000
     volumes:
       - ohutils_production_log_data:/app/log
     depends_on:
       - db
-  https-portal:
-    container_name: ohutils_production_https_portal
-    image: steveltn/https-portal:1
-    ports:
-      - "80:80"
-      - "443:443"
-    links:
-      - app
-    restart: always
-    environment:
-      DOMAINS: "${DOMAIN} -> http://app:3000"
-      STAGE: "production"
-    volumes:
-      - ohutils_production_https_portal_data:/var/lib/https-portal
 volumes:
   ohutils_production_log_data:
   ohutils_production_db_data:
-  ohutils_production_https_portal_data:
