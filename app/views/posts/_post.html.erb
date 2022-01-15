@@ -11,9 +11,7 @@
   <% end %>
 
   <div class="my-default">
-    <%= render "shared/wysiwyg_viewer" do %>
-      <%== post.content %>
-    <% end %>
+    <%= render "posts/content", post: %>
   </div>
 
   <div class="text-xs">

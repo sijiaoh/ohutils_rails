@@ -4,9 +4,7 @@
       <div class="px-2 py-1 font-bold border">
         <%= render "post_title", post: %>
       </div>
-      <%= render "shared/wysiwyg_viewer", class_name: "overflow-hidden" do %>
-        <%== post.content %>
-      <% end %>
+      <%= render "posts/content", class_name: "overflow-hidden", post: %>
     <% end %>
   </div>
 </div>

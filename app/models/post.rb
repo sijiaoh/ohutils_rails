@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   private
 
   def escape_content
+    return if markdown?
+
     self.content = Loofah.fragment(content).scrub!(:escape).to_s
   end
 end
