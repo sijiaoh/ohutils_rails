@@ -20,7 +20,7 @@
 
   <body>
     <%= render "layouts/header", user: current_user %>
-    <main class="container mx-auto px-6">
+    <main class="container max-w-5xl mx-auto px-6">
       <%= render "layouts/messages" %>
       <%= yield %>
     </main>
