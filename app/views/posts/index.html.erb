@@ -5,8 +5,14 @@
   </div>
 
   <turbo-frame id="posts">
-    <div class="horizontal my-default gap-4 justify-center flex-wrap">
-      <%= render partial: "index_post", collection: @posts, as: :post, locals: { space: @space } %>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <% @posts.each do |post| %>
+        <div class="mx-auto">
+          <%= render "index_post", space: @space, post: %>
+        </div>
+      <% end %>
     </div>
+
+    <%= paginate @posts, params: { controller: :spaces, action: :show, slug: @space.slug, space_slug: nil } %>
   </turbo-frame>
 </div>

@@ -51,6 +51,8 @@ gem "omniauth-rails_csrf_protection"
 gem "pundit"
 gem "rolify"
 
+gem "kaminari"
+gem "kaminari-i18n"
 gem "meta-tags"
 
 group :development, :test do
