@@ -13,6 +13,8 @@
       <% end %>
     </div>
 
-    <%= paginate @posts, params: { controller: :spaces, action: :show, slug: @space.slug, space_slug: nil } %>
+    <div class="my-8">
+      <%= paginate @posts, params: { controller: :spaces, action: :show, slug: @space.slug, space_slug: nil } %>
+    </div>
   </turbo-frame>
 </div>
