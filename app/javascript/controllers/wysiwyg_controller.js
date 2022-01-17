@@ -66,6 +66,9 @@ export default class extends Controller {
     return this.element.clientHeight;
   }
 
+  contentType =
+    "@import url('https://fonts.googleapis.com/css2?family=Kosugi&family=Noto+Sans+JP&display=swap');";
+
   async mountTinymce() {
     await tinymce.init({
       language: this.language,
@@ -77,6 +80,7 @@ export default class extends Controller {
 
       body_class: this.bodyClassValue,
       content_css: this.contentCssValue,
+      content_style: this.contentType,
 
       min_height: this.minHeight,
       autoresize_bottom_margin: 0,
