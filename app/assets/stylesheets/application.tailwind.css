@@ -44,4 +44,20 @@
   .scaffold-errors {
     @apply bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg;
   }
+
+  .pagination {
+    @apply flex justify-center gap-1 my-default text-lg whitespace-nowrap;
+  }
+  .pagination > .page {
+    @apply hidden sm:block;
+  }
+  .pagination-current {
+    @apply px-2 py-1 block;
+  }
+  .pagination > .current {
+    @apply pagination-current;
+  }
+  .pagination > span > a {
+    @apply pagination-current border;
+  }
 }
