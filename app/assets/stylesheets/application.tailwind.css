@@ -62,4 +62,14 @@
   .pagination > span > a {
     @apply pagination-current border;
   }
+
+  .post-card {
+    @apply overflow-hidden;
+  }
+  .post-card * {
+    @apply text-xs;
+  }
+  .post-card h2 {
+    @apply text-base;
+  }
 }

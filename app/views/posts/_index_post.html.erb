@@ -4,7 +4,9 @@
       <div class="px-2 py-1 font-bold border">
         <%= render "post_title", post: %>
       </div>
-      <%= render "posts/content", class_name: "overflow-hidden", post: %>
+      <div class="post-card">
+        <%= render "posts/content", post: %>
+      </div>
     <% end %>
   </div>
 </div>
