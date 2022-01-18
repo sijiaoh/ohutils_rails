@@ -53,14 +53,14 @@
   .pagination > .page {
     @apply hidden sm:block;
   }
-  .pagination-current {
+  .pagination-base {
     @apply px-2 py-1 block;
   }
   .pagination > .current {
-    @apply pagination-current;
+    @apply pagination-base font-bold;
   }
   .pagination > span > a {
-    @apply pagination-current border;
+    @apply pagination-base border;
   }
 
   .post-card {
