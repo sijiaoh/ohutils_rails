@@ -77,7 +77,7 @@ RSpec.describe "Posts", type: :system do
     end
   end
 
-  describe "destroy" do
+  describe "destroy" do # rubocop:disable RSpec/MultipleMemoizedHelpers
     let(:path) { post_path post }
 
     include_context "when signed in"
