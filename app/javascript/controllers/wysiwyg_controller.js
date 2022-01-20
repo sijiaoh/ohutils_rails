@@ -86,6 +86,7 @@ export default class extends Controller {
 
       plugins: this.plugins,
       toolbar: this.toolbar,
+      toolbar_sticky: true,
 
       default_link_target: "_blank",
       link_default_protocol: "https",
