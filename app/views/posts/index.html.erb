@@ -14,7 +14,7 @@
     </div>
 
     <div class="my-8">
-      <%= paginate @posts, params: { controller: :spaces, action: :show, slug: @space.slug, space_slug: nil } %>
+      <%= paginate @posts, params: { controller: :spaces, action: :show, hashid: @space.hashid, space_hashid: nil } %>
     </div>
   </turbo-frame>
 </div>

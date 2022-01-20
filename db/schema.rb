@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_20_031651) do
+ActiveRecord::Schema.define(version: 2022_01_20_034910) do
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 2022_01_20_031651) do
   end
 
   create_table "spaces", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "slug", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "display_on_home", default: false, null: false
-    t.index ["slug"], name: "index_spaces_on_slug", unique: true
+    t.string "hashid"
+    t.index ["hashid"], name: "index_spaces_on_hashid", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
