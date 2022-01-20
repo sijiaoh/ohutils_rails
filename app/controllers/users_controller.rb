@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = policy_scope(User).find(params[:id])
+    @user = policy_scope(User).find_by!(hashid: params[:hashid])
   end
 
   def user_params

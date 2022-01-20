@@ -139,6 +139,7 @@ GEM
     faraday-retry (1.0.3)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashids (1.0.6)
     hashie (5.0.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
@@ -380,6 +381,7 @@ DEPENDENCIES
   devise-i18n
   factory_bot_rails
   faker
+  hashids
   importmap-rails
   kaminari
   kaminari-i18n

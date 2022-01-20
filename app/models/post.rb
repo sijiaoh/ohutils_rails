@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include HashidSluggable
+
   belongs_to :user
   belongs_to :space
 

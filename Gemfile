@@ -44,6 +44,8 @@ gem "bootsnap", require: false
 
 gem "rails-i18n"
 
+gem "hashids"
+
 gem "devise"
 gem "devise-i18n"
 gem "omniauth-google-oauth2"

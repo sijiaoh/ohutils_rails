@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = authorize policy_scope(@space.posts).find(params[:id])
+    @post = authorize policy_scope(@space.posts).find_by!(hashid: params[:hashid])
   end
 
   def post_params
