@@ -1,6 +1,7 @@
 <% unless Rails.env.test? %>
   <div
     data-controller="wysiwyg"
+    data-wysiwyg-id-value="<%= generate_wysiwyg_id %>"
     data-wysiwyg-body-class-value="<%= wysiwyg_class %>"
     data-wysiwyg-content-css-value="<%=
       [

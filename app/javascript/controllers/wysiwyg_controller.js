@@ -1,12 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
-import { v4 } from "uuid";
 import { get_importmap } from "utils/get_importmap";
 
 export default class extends Controller {
-  static values = { bodyClass: String, contentCss: Array };
+  static values = { id: String, bodyClass: String, contentCss: Array };
 
   async connect() {
     this.setIdToTextarea();
+    this.disconnect();
     await this.mountTinymce();
   }
 
@@ -14,13 +14,8 @@ export default class extends Controller {
     if (this.selector) tinymce.remove(this.selector);
   }
 
-  get id() {
-    if (this._id == null) this._id = v4();
-    return this._id;
-  }
-
   get selector() {
-    return `#${this.id}`;
+    return `#${this.idValue}`;
   }
 
   setIdToTextarea() {
@@ -28,7 +23,7 @@ export default class extends Controller {
     if (textareas.length != 1)
       throw new Error("wysiwyg_controller shuld have 1 textarea");
     const textarea = textareas[0];
-    textarea.id = this.id;
+    textarea.id = this.idValue;
   }
 
   language = "ja";
