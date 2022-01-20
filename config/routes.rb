@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   resources :users, param: :hashid, only: [:index, :show, :create]
-  resources :spaces, param: :hashid do
+  resources :spaces, param: :hashid, shallow: true do
     resources :posts, param: :hashid
   end
 end

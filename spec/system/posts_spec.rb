@@ -23,7 +23,7 @@ RSpec.describe "Posts", type: :system do
   end
 
   describe "show" do
-    subject(:path) { space_post_path space, post }
+    subject(:path) { post_path post }
 
     include_context "when signed in"
 
@@ -55,7 +55,7 @@ RSpec.describe "Posts", type: :system do
   end
 
   describe "edit" do # rubocop:disable RSpec/MultipleMemoizedHelpers
-    subject(:path) { edit_space_post_path space, existing_post }
+    subject(:path) { edit_post_path existing_post }
 
     include_context "when signed in"
 
@@ -69,7 +69,7 @@ RSpec.describe "Posts", type: :system do
       check_published
 
       click_on I18n.t "helpers.submit.update"
-      expect(page).to have_current_path space_post_path(space, existing_post)
+      expect(page).to have_current_path post_path(existing_post)
 
       existing_post.reload
       attributes = [:title, :content, :published]

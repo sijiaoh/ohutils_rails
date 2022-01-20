@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_space
+  before_action :set_space, only: %i[index new create]
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
@@ -14,18 +14,18 @@ class PostsController < ApplicationController
   def show; end
 
   def new
-    @post = authorize Post.new
+    @post = authorize Post.new space: @space
     skip_policy_scope
   end
 
   def edit; end
 
   def create
-    @post = authorize Post.new(post_params)
+    @post = authorize Post.new(post_params.merge(user: current_user, space: @space))
     skip_policy_scope
 
     if @post.save
-      redirect_to [@space, @post], notice: "Post was successfully created."
+      redirect_to @post, notice: "Post was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to [@space, @post], notice: "Post was successfully updated."
+      redirect_to @post, notice: "Post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to @space, notice: "Post was successfully destroyed."
+    redirect_to @post.space, notice: "Post was successfully destroyed."
   end
 
   private
@@ -51,10 +51,10 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = authorize policy_scope(@space.posts).find_by!(hashid: params[:hashid])
+    @post = authorize policy_scope(Post).find_by!(hashid: params[:hashid])
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :copy_protect, :published).merge(user: current_user, space: @space)
+    params.require(:post).permit(:title, :content, :copy_protect, :published)
   end
 end

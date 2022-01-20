@@ -2,7 +2,7 @@
   <div class="scaffold-buttons my-default">
     <%= render "edit_link", space: @space, post: @post %>
     <%= render "destroy_button", space: @space, post: @post %>
-    <%= render "back_to_index_link", space: @space %>
+    <%= render "back_to_index_link", post: @post %>
   </div>
 
   <%= render @post %>
