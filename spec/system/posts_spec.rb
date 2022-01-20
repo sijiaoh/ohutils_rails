@@ -57,9 +57,9 @@ RSpec.describe "Posts", type: :system do
   describe "edit" do # rubocop:disable RSpec/MultipleMemoizedHelpers
     subject(:path) { edit_post_path existing_post }
 
-    include_context "when signed in"
-
     let(:existing_post) { create :post, user: current_user, space:, published: !post.published }
+
+    include_context "when signed in"
 
     it "change existing post" do
       visit path
@@ -74,6 +74,25 @@ RSpec.describe "Posts", type: :system do
       existing_post.reload
       attributes = [:title, :content, :published]
       expect(existing_post.slice(*attributes)).to eq post.slice(*attributes)
+    end
+  end
+
+  describe "destroy" do
+    let(:path) { post_path post }
+
+    include_context "when signed in"
+
+    before do
+      post.save!
+    end
+
+    it "destroys post" do
+      visit path
+
+      expect do
+        click_on I18n.t("destroy")
+        expect(page).not_to have_current_path path
+      end.to change(Post, :count).by(-1)
     end
   end
 end
