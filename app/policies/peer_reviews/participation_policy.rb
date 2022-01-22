@@ -12,6 +12,10 @@ module PeerReviews
       user.present?
     end
 
+    def update?
+      user&.is_admin? || user == record.user
+    end
+
     class Scope < Scope
       def resolve
         scope.all
