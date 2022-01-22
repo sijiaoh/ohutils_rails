@@ -18,11 +18,12 @@ ja:
       peer_review:
         title: "タイトル"
         status: "ステータス"
-    enums:
-      peer_review:
-        status:
-          doing: "実施中"
-          done: "完了"
+
+  enumerize:
+    peer_review:
+      status:
+        doing: "実施中"
+        done: "完了"
 
   title: "Ohutils"
   sign_out: サインアウト

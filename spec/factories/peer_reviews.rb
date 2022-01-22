@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :peer_review do
-    space { nil }
-    title { "MyString" }
-    hashid { "MyString" }
+    title { Faker::Book.title }
   end
 end

@@ -8,7 +8,7 @@
 
   <div class="vertical my-default">
     <%= form.label :status %>
-    <%= form.select(:status, options_for_select_with_i18n(PeerReview, :statuses)) %>
+    <%= form.select(:status, PeerReview.status.options) %>
   </div>
 
   <%= form.submit class: "button-primary my-default" %>

@@ -7,6 +7,6 @@
   </div>
   <div class="horizontal my-default">
     <div class="font-medium"><%= PeerReview.human_attribute_name :status %>:</div>
-    <%= enum_t PeerReview, :status, peer_review.status %>
+    <%= peer_review.status.text %>
   </div>
 </div>
