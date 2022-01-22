@@ -1,24 +1,21 @@
 module PeerReviews
   class ParticipationsController < ApplicationController
+    before_action :set_peer_review, only: %i[index new create]
     before_action :set_peer_reviews_participation, only: %i[show edit update destroy]
 
-    # GET /peer_reviews/participations
     def index
-      @peer_reviews_participations = PeerReviews::Participation.all
+      @peer_reviews_participations = policy_scope(@peer_review.peer_reviews_participations).page params[:page]
+      authorize @peer_reviews_participations
     end
 
-    # GET /peer_reviews/participations/1
     def show; end
 
-    # GET /peer_reviews/participations/new
     def new
       @peer_reviews_participation = PeerReviews::Participation.new
     end
 
-    # GET /peer_reviews/participations/1/edit
     def edit; end
 
-    # POST /peer_reviews/participations
     def create
       @peer_reviews_participation = PeerReviews::Participation.new(peer_reviews_participation_params)
 
@@ -29,7 +26,6 @@ module PeerReviews
       end
     end
 
-    # PATCH/PUT /peer_reviews/participations/1
     def update
       if @peer_reviews_participation.update(peer_reviews_participation_params)
         redirect_to @peer_reviews_participation, notice: "Participation was successfully updated."
@@ -38,7 +34,6 @@ module PeerReviews
       end
     end
 
-    # DELETE /peer_reviews/participations/1
     def destroy
       @peer_reviews_participation.destroy
       redirect_to peer_reviews_participations_url, notice: "Participation was successfully destroyed."
@@ -46,12 +41,15 @@ module PeerReviews
 
     private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_peer_reviews_participation
-      @peer_reviews_participation = PeerReviews::Participation.find(params[:id])
+    def set_peer_review
+      @peer_reviews_participation = policy_scope(PeerReview).find_by!(hashid: params[:peer_review_hashid])
+      authorize @peer_reviews_participation, :show?
     end
 
-    # Only allow a list of trusted parameters through.
+    def set_peer_reviews_participation
+      @peer_reviews_participation = authorize policy_scope(PeerReviews::Participation).find_by!(hashid: params[:hashid])
+    end
+
     def peer_reviews_participation_params
       params.require(:peer_reviews_participation).permit(:user_id, :peer_review_id, :hashid, :comment)
     end

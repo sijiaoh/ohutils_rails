@@ -12,6 +12,12 @@ RSpec.describe "peer_reviews/participations", type: :system do
   describe "index" do
     subject(:path) { peer_review_peer_reviews_participations_path peer_review }
 
+    include_context "when signed in"
+
+    before do
+      current_user.add_role :admin
+    end
+
     include_examples "simple visit test"
   end
 
