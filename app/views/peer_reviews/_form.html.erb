@@ -1,0 +1,18 @@
+<%= form_with(model: peer_review, class: "contents") do |form| %>
+  <%= render "shared/form_errors", errors: peer_review.errors %>
+
+  <div class="vertical my-default">
+    <%= form.label :space_id %>
+    <%= form.text_field :space_id, class: "text-field" %>
+  </div>
+  <div class="vertical my-default">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "text-field" %>
+  </div>
+  <div class="vertical my-default">
+    <%= form.label :hashid %>
+    <%= form.text_field :hashid, class: "text-field" %>
+  </div>
+
+  <%= form.submit class: "button-primary my-default" %>
+<% end %>

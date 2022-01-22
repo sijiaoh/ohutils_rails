@@ -1,0 +1,10 @@
+<div>
+  <div class="flex justify-between items-center">
+    <h1 class="title my-default"><%= title t ".title" %></h1>
+    <%= render "new_link" %>
+  </div>
+
+  <%= render partial: "index_peer_review", collection: @peer_reviews, as: :peer_review %>
+
+  <%= paginate @peer_reviews %>
+</div>

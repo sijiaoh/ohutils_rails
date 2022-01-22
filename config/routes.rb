@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :users, param: :hashid, only: [:index, :show, :create]
   resources :spaces, param: :hashid, shallow: true do
     resources :posts, param: :hashid
+    resources :peer_reviews, param: :hashid
   end
 end
