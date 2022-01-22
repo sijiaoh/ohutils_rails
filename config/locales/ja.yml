@@ -3,6 +3,7 @@ ja:
     models:
       space: "スペース"
       post: "投稿"
+      peer_review: "相互評価"
     attributes:
       user:
         terms_of_service: "利用規約"
@@ -14,6 +15,14 @@ ja:
         content: "内容"
         copy_protect: "コピープロテクト"
         published: "公開"
+      peer_review:
+        title: "タイトル"
+        status: "ステータス"
+    enums:
+      peer_review:
+        status:
+          doing: "実施中"
+          done: "完了"
 
   title: "Ohutils"
   sign_out: サインアウト
@@ -52,3 +61,10 @@ ja:
     post:
       publishing: "公開中"
       unpublished: "未公開"
+  peer_reviews:
+    index:
+      title: "相互評価一覧"
+    new:
+      title: "新規相互評価"
+    edit:
+      title: "相互評価編集"

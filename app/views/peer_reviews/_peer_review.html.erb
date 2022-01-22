@@ -1,16 +1,12 @@
 <div id="<%= dom_id peer_review %>">
-  <h1 class="title my-default"><%= title PeerReview.model_name.human %></h1>
+  <h1 class="title my-default"><%= title peer_review.title %></h1>
 
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReview.human_attribute_name :space_id %>:</div>
-    <%= peer_review.space_id %>
-  </div>
   <div class="horizontal my-default">
     <div class="font-medium"><%= PeerReview.human_attribute_name :title %>:</div>
     <%= peer_review.title %>
   </div>
   <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReview.human_attribute_name :hashid %>:</div>
-    <%= peer_review.hashid %>
+    <div class="font-medium"><%= PeerReview.human_attribute_name :status %>:</div>
+    <%= enum_t PeerReview, :status, peer_review.status %>
   </div>
 </div>

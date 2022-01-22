@@ -3,8 +3,8 @@
 
   <div class="scaffold-buttons my-default">
     <%= render "show_link", peer_review: @peer_review %>
-    <%= render "back_to_index_link" %>
+    <%= render "back_to_index_link", peer_review: @peer_review %>
   </div>
 
-  <%= render "form", peer_review: @peer_review %>
+  <%= render "form", space: nil, peer_review: @peer_review %>
 </div>

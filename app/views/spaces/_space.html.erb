@@ -19,4 +19,17 @@
       target="_top"
     ></turbo-frame>
   </div>
+
+  <div class="my-8 mx-4">
+    <div class="flex justify-between items-center my-default">
+      <h2 class="font-bold text-2xl"><%= t "peer_reviews.index.title" %></h2>
+      <%= render "peer_reviews/new_link", space: %>
+    </div>
+
+    <turbo-frame
+      id="peer_reviews"
+      src="<%= space_peer_reviews_path space, page: params[:page] %>"
+      target="_top"
+    ></turbo-frame>
+  </div>
 </div>
