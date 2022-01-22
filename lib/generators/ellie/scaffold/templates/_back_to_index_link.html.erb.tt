@@ -1,0 +1,3 @@
+<%% if policy(:<%= singular_table_name %>).index? %>
+  <%%= link_to t("back_to_index"), <%= plural_route_name %>_path, class: "button-secondary" %>
+<%% end %>

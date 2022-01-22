@@ -1,0 +1,34 @@
+<%%= form_with(model: <%= model_resource_name %>, class: "contents") do |form| %>
+  <%%= render "shared/form_errors", errors: <%= singular_table_name %>.errors %>
+
+<% attributes.each do |attribute| -%>
+<% if attribute.field_type == :check_box -%>
+  <div class="horizontal my-default">
+<% else -%>
+  <div class="vertical my-default">
+<% end -%>
+<% if attribute.password_digest? -%>
+    <%%= form.label :password %>
+    <%%= form.password_field :password %>
+  </div>
+  <div class="vertical my-default">
+    <%%= form.label :password_confirmation %>
+    <%%= form.password_field :password_confirmation %>
+<% elsif attribute.attachments? -%>
+    <%%= form.label :<%= attribute.column_name %> %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true %>
+<% else -%>
+    <%%= form.label :<%= attribute.column_name %> %>
+<% if attribute.field_type == :text_area -%>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "text-area" %>
+<% elsif attribute.field_type == :text_field -%>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "text-field" %>
+<% else -%>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %> %>
+<% end -%>
+<% end -%>
+  </div>
+<% end -%>
+
+  <%%= form.submit class: "button-primary my-default" %>
+<%% end %>

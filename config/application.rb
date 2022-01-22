@@ -37,6 +37,8 @@ module Ohutils
     config.i18n.default_locale = :ja
 
     config.generators do |g|
+      g.template_engine :ellie
+
       g.helper false
       g.jbuilder false
 

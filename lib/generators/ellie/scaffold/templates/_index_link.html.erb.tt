@@ -1,0 +1,3 @@
+<%% if policy(:<%= singular_table_name %>).index? %>
+  <%%= link_to t("<%= view_i18n_scope %>.index.title"), <%= plural_route_name %>_path, class: "button-primary" %>
+<%% end %>

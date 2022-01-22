@@ -1,0 +1,3 @@
+<%% if policy(<%= singular_table_name %>).edit? %>
+  <%%= link_to t("edit"), [:edit, <%= singular_table_name %>], class: "button-primary" %>
+<%% end %>

@@ -1,0 +1,8 @@
+<div id="<%%= dom_id <%= singular_table_name %> %>">
+  <div class="my-default font-bold"><%%= <%= singular_table_name %>.id %></div>
+
+  <div class="scaffold-buttons my-default">
+    <%%= render "show_link", <%= singular_table_name %>: %>
+    <%%= render "edit_link", <%= singular_table_name %>: %>
+  </div>
+</div>
