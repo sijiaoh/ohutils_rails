@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "peer_reviews/participations", type: :system do
   let(:peer_review_user) { create :user }
   let(:peer_review) { create :peer_review, :with_space, user: peer_review_user }
-  let(:participation) { build :peer_reviews_participation, :with_space, user: current_user }
+  let(:participation) { build :peer_reviews_participation, user: current_user, peer_review: }
 
   def to_label(attribute)
     PeerReview.human_attribute_name attribute
@@ -27,7 +27,7 @@ RSpec.describe "peer_reviews/participations", type: :system do
     include_context "when signed in"
 
     before do
-      peer_review.save!
+      participation.save!
     end
 
     include_examples "simple visit test"

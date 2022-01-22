@@ -11,7 +11,7 @@ module PeerReviews
     def show; end
 
     def new
-      @peer_reviews_participation = PeerReviews::Participation.new
+      @peer_reviews_participation = PeerReviews::Participation.new peer_review: @peer_review
     end
 
     def edit; end
