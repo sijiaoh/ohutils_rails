@@ -1,0 +1,3 @@
+<% if policy(peer_reviews_participation).edit? %>
+  <%= link_to t("edit"), [:edit, peer_reviews_participation], class: "button-primary" %>
+<% end %>

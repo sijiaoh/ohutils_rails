@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :peer_reviews do
+    resources :participations
+  end
   root "static_pages#home"
 
   get "sign_in", to: "session#new"

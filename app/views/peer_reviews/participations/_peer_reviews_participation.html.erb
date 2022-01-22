@@ -1,0 +1,20 @@
+<div id="<%= dom_id peer_reviews_participation %>">
+  <h1 class="title my-default"><%= title PeerReviews::Participation.model_name.human %></h1>
+
+  <div class="horizontal my-default">
+    <div class="font-medium"><%= PeerReviews::Participation.human_attribute_name :user_id %>:</div>
+    <%= peer_reviews_participation.user_id %>
+  </div>
+  <div class="horizontal my-default">
+    <div class="font-medium"><%= PeerReviews::Participation.human_attribute_name :peer_review_id %>:</div>
+    <%= peer_reviews_participation.peer_review_id %>
+  </div>
+  <div class="horizontal my-default">
+    <div class="font-medium"><%= PeerReviews::Participation.human_attribute_name :hashid %>:</div>
+    <%= peer_reviews_participation.hashid %>
+  </div>
+  <div class="horizontal my-default">
+    <div class="font-medium"><%= PeerReviews::Participation.human_attribute_name :comment %>:</div>
+    <%= peer_reviews_participation.comment %>
+  </div>
+</div>

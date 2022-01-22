@@ -1,0 +1,3 @@
+<% if policy(peer_reviews_participation).show? %>
+  <%= link_to t("detail"), peer_reviews_participation, class: "button-primary" %>
+<% end %>

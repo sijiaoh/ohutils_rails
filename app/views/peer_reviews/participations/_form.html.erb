@@ -1,0 +1,22 @@
+<%= form_with(model: peer_reviews_participation, class: "contents") do |form| %>
+  <%= render "shared/form_errors", errors: peer_reviews_participation.errors %>
+
+  <div class="vertical my-default">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, class: "text-field" %>
+  </div>
+  <div class="vertical my-default">
+    <%= form.label :peer_review_id %>
+    <%= form.text_field :peer_review_id, class: "text-field" %>
+  </div>
+  <div class="vertical my-default">
+    <%= form.label :hashid %>
+    <%= form.text_field :hashid, class: "text-field" %>
+  </div>
+  <div class="vertical my-default">
+    <%= form.label :comment %>
+    <%= form.text_area :comment, class: "text-area" %>
+  </div>
+
+  <%= form.submit class: "button-primary my-default" %>
+<% end %>

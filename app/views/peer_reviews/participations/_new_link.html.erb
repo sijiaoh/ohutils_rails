@@ -1,0 +1,3 @@
+<% if policy(:peer_reviews_participation).new? %>
+  <%= link_to t("peer_reviews.participations.new.title"), new_peer_reviews_participation_path, class: "button-primary" %>
+<% end %>

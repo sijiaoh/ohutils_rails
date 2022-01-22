@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_015710) do
+ActiveRecord::Schema.define(version: 2022_01_22_134949) do
 
   create_table "peer_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 2022_01_22_015710) do
     t.index ["hashid"], name: "index_peer_reviews_on_hashid", unique: true
     t.index ["space_id"], name: "index_peer_reviews_on_space_id"
     t.index ["user_id"], name: "index_peer_reviews_on_user_id"
+  end
+
+  create_table "peer_reviews_participations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "peer_review_id", null: false
+    t.string "hashid"
+    t.text "comment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashid"], name: "index_peer_reviews_participations_on_hashid", unique: true
+    t.index ["peer_review_id"], name: "index_peer_reviews_participations_on_peer_review_id"
+    t.index ["user_id", "peer_review_id"], name: "index_peer_reviews_participations_on_user_id_and_peer_review_id", unique: true
+    t.index ["user_id"], name: "index_peer_reviews_participations_on_user_id"
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -90,6 +103,8 @@ ActiveRecord::Schema.define(version: 2022_01_22_015710) do
 
   add_foreign_key "peer_reviews", "spaces"
   add_foreign_key "peer_reviews", "users"
+  add_foreign_key "peer_reviews_participations", "peer_reviews"
+  add_foreign_key "peer_reviews_participations", "users"
   add_foreign_key "posts", "spaces"
   add_foreign_key "posts", "users"
   add_foreign_key "social_profiles", "users"
