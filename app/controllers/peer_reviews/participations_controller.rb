@@ -39,7 +39,7 @@ module PeerReviews
 
     def destroy
       @peer_reviews_participation.destroy
-      redirect_to peer_reviews_participations_url, notice: "Participation was successfully destroyed."
+      redirect_to @peer_reviews_participation.peer_review, notice: "Participation was successfully destroyed."
     end
 
     private
