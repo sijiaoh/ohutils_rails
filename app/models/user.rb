@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :social_profiles, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :peer_reviews, dependent: :destroy
+  has_many :peer_reviews_participations, class_name: "PeerReviews::Participation", dependent: :destroy
+  has_many :participated_peer_reviews, through: :peer_reviews_participations, foreign_key: :peer_review_id
 
   def self.from_omniauth(access_token)
     social_profile = SocialProfile.find_by provider: access_token.provider, uid: access_token.uid
