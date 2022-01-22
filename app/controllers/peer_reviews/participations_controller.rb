@@ -11,13 +11,16 @@ module PeerReviews
     def show; end
 
     def new
-      @peer_reviews_participation = PeerReviews::Participation.new peer_review: @peer_review
+      @peer_reviews_participation = authorize PeerReviews::Participation.new(peer_review: @peer_review)
+      skip_policy_scope
     end
 
     def edit; end
 
     def create
-      @peer_reviews_participation = PeerReviews::Participation.new(peer_reviews_participation_params)
+      p = peer_reviews_participation_params.merge(user: current_user, peer_review: @peer_review)
+      @peer_reviews_participation = authorize PeerReviews::Participation.new(p)
+      skip_policy_scope
 
       if @peer_reviews_participation.save
         redirect_to @peer_reviews_participation, notice: "Participation was successfully created."
@@ -42,8 +45,8 @@ module PeerReviews
     private
 
     def set_peer_review
-      @peer_reviews_participation = policy_scope(PeerReview).find_by!(hashid: params[:peer_review_hashid])
-      authorize @peer_reviews_participation, :show?
+      @peer_review = policy_scope(PeerReview).find_by!(hashid: params[:peer_review_hashid])
+      authorize @peer_review, :show?
     end
 
     def set_peer_reviews_participation
@@ -51,7 +54,7 @@ module PeerReviews
     end
 
     def peer_reviews_participation_params
-      params.require(:peer_reviews_participation).permit(:user_id, :peer_review_id, :hashid, :comment)
+      params.require(:peer_reviews_participation).permit(:comment)
     end
   end
 end
