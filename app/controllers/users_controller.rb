@@ -1,24 +1,23 @@
 class UsersController < ApplicationController
-  skip_after_action :verify_policy_scoped, except: :show
+  skip_before_action :store_user_location!, only: %i[new]
 
-  before_action :authorize_action, except: :show
   before_action :set_user, only: %i[show]
   before_action :set_omniauth_data, only: %i[new create]
 
   def index
-    @users = User.all
+    @users = authorize policy_scope(User).all
   end
 
-  def show
-    authorize @user
-  end
+  def show; end
 
   def new
-    @user = User.new
+    @user = authorize User.new
+    skip_policy_scope
   end
 
   def create
-    @user = User.build_with_social_profile(user_params, @omniauth_data)
+    @user = authorize User.build_with_social_profile(user_params, @omniauth_data)
+    skip_policy_scope
 
     if @user.save
       sign_in_and_redirect @user, event: :authentication
@@ -29,12 +28,8 @@ class UsersController < ApplicationController
 
   private
 
-  def authorize_action
-    authorize :user
-  end
-
   def set_user
-    @user = policy_scope(User).find_by!(hashid: params[:hashid])
+    @user = authorize policy_scope(User).find_by!(hashid: params[:hashid])
   end
 
   def user_params

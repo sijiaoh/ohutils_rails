@@ -1,4 +1,6 @@
 class SessionController < ApplicationController
+  skip_before_action :store_user_location!, only: %i[new]
+
   def new
     authorize :session
     skip_policy_scope
