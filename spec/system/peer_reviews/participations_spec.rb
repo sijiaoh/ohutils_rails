@@ -5,6 +5,12 @@ RSpec.describe "peer_reviews/participations", type: :system do
   let(:peer_review) { create :peer_review, :with_space, user: peer_review_user }
   let(:participation) { build :peer_reviews_participation, user: current_user, peer_review: }
 
+  include_context "when signed in"
+
+  before do
+    current_user.add_role :admin
+  end
+
   def to_label(attribute)
     PeerReview.human_attribute_name attribute
   end
@@ -12,19 +18,11 @@ RSpec.describe "peer_reviews/participations", type: :system do
   describe "index" do
     subject(:path) { peer_review_peer_reviews_participations_path peer_review }
 
-    include_context "when signed in"
-
-    before do
-      current_user.add_role :admin
-    end
-
     include_examples "simple visit test"
   end
 
   describe "show" do
     subject(:path) { peer_reviews_participation_path participation }
-
-    include_context "when signed in"
 
     before do
       participation.save!
@@ -35,8 +33,6 @@ RSpec.describe "peer_reviews/participations", type: :system do
 
   describe "new" do
     subject(:path) { new_peer_review_peer_reviews_participation_path peer_review }
-
-    include_context "when signed in"
 
     it "creates new participation" do
       visit path
@@ -60,8 +56,6 @@ RSpec.describe "peer_reviews/participations", type: :system do
       participation.save!
     end
 
-    include_context "when signed in"
-
     it "change existing participation" do
       visit path
 
@@ -79,8 +73,6 @@ RSpec.describe "peer_reviews/participations", type: :system do
 
   describe "destroy" do
     subject(:path) { peer_reviews_participation_path participation }
-
-    include_context "when signed in"
 
     before do
       participation.save!

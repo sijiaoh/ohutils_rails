@@ -3,7 +3,7 @@
 
   <div class="scaffold-buttons my-default">
     <%= render "show_link", peer_reviews_participation: @peer_reviews_participation %>
-    <%= render "back_to_index_link" %>
+    <%= render "back_to_index_link", peer_reviews_participation: @peer_reviews_participation %>
   </div>
 
   <%= render "form", peer_review: nil, peer_reviews_participation: @peer_reviews_participation %>

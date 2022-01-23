@@ -2,7 +2,7 @@
   <div class="scaffold-buttons my-default">
     <%= render "edit_link", peer_reviews_participation: @peer_reviews_participation %>
     <%= render "destroy_button", peer_reviews_participation: @peer_reviews_participation %>
-    <%= render "back_to_index_link" %>
+    <%= render "back_to_index_link", peer_reviews_participation: @peer_reviews_participation %>
   </div>
 
   <%= render "peer_reviews_participation", peer_reviews_participation: @peer_reviews_participation %>
