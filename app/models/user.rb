@@ -22,6 +22,12 @@ class User < ApplicationRecord
     social_profile&.user
   end
 
+  def self.create_guest(user_params)
+    user = User.create(user_params)
+    user.add_role :guest if user.persisted?
+    user
+  end
+
   def self.build_with_social_profile(user_params, omniauth_data)
     user = User.new(user_params)
     user.social_profiles.new(

@@ -1,0 +1,11 @@
+<div>
+  <h1 class="title my-default"><%= title t ".title" %></h1>
+
+  <% @guest_users.each do |guest| %>
+    <div>
+      <%= link_to guest.name, guest %>
+    </div>
+  <% end %>
+
+  <%= paginate @guest_users  %>
+</div>

@@ -50,6 +50,13 @@ ja:
       title: "ユーザー一覧"
     new:
       title: "ユーザー登録"
+  guests:
+    users:
+      sign_out_warning: "本当にログアウトしますか？\nゲストは再ログインできません。"
+      index:
+        title: "ゲストアカウント一覧"
+      new:
+        title: "ゲスト登録"
   spaces:
     index:
       title: "スペース一覧"
