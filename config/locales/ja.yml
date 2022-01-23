@@ -8,6 +8,7 @@ ja:
         participation: "相互評価参加"
     attributes:
       user:
+        name: "名前"
         terms_of_service: "利用規約"
       space:
         name: "スペース名"

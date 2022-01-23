@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_134949) do
+ActiveRecord::Schema.define(version: 2022_01_23_075315) do
 
   create_table "peer_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_134949) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "hashid"
+    t.string "name", default: "", null: false
     t.index ["hashid"], name: "index_users_on_hashid", unique: true
   end
 

@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:terms_of_service)
+    params.require(:user).permit(:name, :terms_of_service)
   end
 
   def set_omniauth_data

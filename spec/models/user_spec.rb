@@ -27,8 +27,9 @@ RSpec.describe User, type: :model do
   end
 
   describe ".from_omniauth" do
-    subject!(:user) { described_class.build_with_social_profile({}, omniauth_data).tap(&:save) }
+    subject!(:user) { described_class.build_with_social_profile(params, omniauth_data).tap(&:save) }
 
+    let(:params) { build(:user).slice(:name) }
     let(:omniauth_data) { Faker::Omniauth.google.with_indifferent_access }
     let(:access_token) { ActiveSupport::InheritableOptions.new omniauth_data }
 
@@ -38,8 +39,9 @@ RSpec.describe User, type: :model do
   end
 
   describe ".build_with_social_profile" do
-    subject(:user) { described_class.build_with_social_profile({}, omniauth_data) }
+    subject(:user) { described_class.build_with_social_profile(params, omniauth_data) }
 
+    let(:params) { build(:user).slice(:name) }
     let(:omniauth_data) { Faker::Omniauth.google.with_indifferent_access }
 
     it "creates user and social_profile" do

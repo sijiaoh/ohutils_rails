@@ -9,8 +9,10 @@ RSpec.describe "authentication", type: :system do
       click_on I18n.t("session.new.with_google")
       expect(page).to have_current_path sign_up_path
 
+      fill_in User.human_attribute_name(:name), with: build(:user).name
+      check User.human_attribute_name(:terms_of_service)
+
       expect do
-        check User.human_attribute_name(:terms_of_service)
         click_on I18n.t("helpers.submit.create")
         expect(page).not_to have_current_path sign_up_path
       end.to change(User, :count).by(1).and change(SocialProfile, :count).by(1)
@@ -29,7 +31,7 @@ RSpec.describe "authentication", type: :system do
   describe "sign in" do
     it "signs in" do
       google = OmniAuth.config.mock_auth[:google_oauth2]
-      user = User.build_with_social_profile({}, google)
+      user = User.build_with_social_profile(build(:user).slice(:name), google)
       user.save!
 
       visit sign_in_path

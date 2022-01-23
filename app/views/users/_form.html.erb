@@ -10,6 +10,10 @@
   <% end %>
 
   <div class="horizontal my-default">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "text-field" %>
+  </div>
+  <div class="horizontal my-default">
     <%= form.check_box :terms_of_service %>
     <%= form.label :terms_of_service, User.human_attribute_name(:terms_of_service) %>
   </div>

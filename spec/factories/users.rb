@@ -1,4 +1,5 @@
 FactoryBot.define do
-  factory :user do # rubocop:disable Lint/EmptyBlock
+  factory :user do
+    name { Faker::Internet.username }
   end
 end

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   rolify
 
+  validates :name, presence: true
   validates :terms_of_service, acceptance: true
 
   has_many :social_profiles, dependent: :destroy
