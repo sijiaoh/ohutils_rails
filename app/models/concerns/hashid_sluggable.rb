@@ -1,3 +1,16 @@
+# Monkey patch for use hashid to dom_id.
+module ActionView
+  module RecordIdentifier
+    private
+
+    def record_key_for_dom_id(record)
+      model = convert_to_model(record)
+      key = model.class.ancestors.include?(HashidSluggable) ? [model.hashid] : model.to_key
+      key ? key.join(JOIN) : key
+    end
+  end
+end
+
 module HashidSluggable
   extend ActiveSupport::Concern
 

@@ -4,15 +4,15 @@ RSpec.describe "Posts", type: :system do
   let(:space) { create :space }
   let(:post) { build :post, user: current_user, space: }
 
-  let(:title_label) { Post.human_attribute_name :title }
-  let(:content_label) { Post.human_attribute_name :content }
-  let(:published_label) { Post.human_attribute_name :published }
+  def to_label(attribute)
+    Post.human_attribute_name attribute
+  end
 
   def check_published
     if post.published
-      check published_label
+      check to_label(:published)
     else
-      uncheck published_label
+      uncheck to_label(:published)
     end
   end
 
@@ -42,8 +42,8 @@ RSpec.describe "Posts", type: :system do
     it "creates new post" do
       visit path
 
-      fill_in title_label, with: post.title
-      fill_in content_label, with: post.content
+      fill_in to_label(:title), with: post.title
+      fill_in to_label(:content), with: post.content
       check_published
 
       click_on I18n.t "helpers.submit.create"
@@ -54,7 +54,7 @@ RSpec.describe "Posts", type: :system do
     end
   end
 
-  describe "edit" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe "edit" do
     subject(:path) { edit_post_path existing_post }
 
     let(:existing_post) { create :post, user: current_user, space:, published: !post.published }
@@ -64,8 +64,8 @@ RSpec.describe "Posts", type: :system do
     it "change existing post" do
       visit path
 
-      fill_in title_label, with: post.title
-      fill_in content_label, with: post.content
+      fill_in to_label(:title), with: post.title
+      fill_in to_label(:content), with: post.content
       check_published
 
       click_on I18n.t "helpers.submit.update"
@@ -77,8 +77,8 @@ RSpec.describe "Posts", type: :system do
     end
   end
 
-  describe "destroy" do # rubocop:disable RSpec/MultipleMemoizedHelpers
-    let(:path) { post_path post }
+  describe "destroy" do
+    subject(:path) { post_path post }
 
     include_context "when signed in"
 
