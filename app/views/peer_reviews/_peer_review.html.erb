@@ -1,5 +1,8 @@
 <div id="<%= dom_id peer_review %>">
-  <h1 class="title my-default"><%= title peer_review.title %></h1>
+  <div class="flex justify-between items-center">
+    <h1 class="title my-default"><%= title peer_review.title %></h1>
+    <%= render "peer_reviews/participations/new_link", peer_review: %>
+  </div>
 
   <div class="horizontal my-default">
     <div class="font-medium"><%= PeerReview.human_attribute_name :title %>:</div>

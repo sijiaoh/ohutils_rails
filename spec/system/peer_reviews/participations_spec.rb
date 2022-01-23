@@ -12,7 +12,7 @@ RSpec.describe "peer_reviews/participations", type: :system do
   end
 
   def to_label(attribute)
-    PeerReview.human_attribute_name attribute
+    PeerReviews::Participation.human_attribute_name attribute
   end
 
   describe "index" do

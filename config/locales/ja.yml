@@ -4,6 +4,8 @@ ja:
       space: "スペース"
       post: "投稿"
       peer_review: "相互評価"
+      peer_reviews:
+        participation: "相互評価参加"
     attributes:
       user:
         terms_of_service: "利用規約"
@@ -18,6 +20,8 @@ ja:
       peer_review:
         title: "タイトル"
         status: "ステータス"
+      peer_reviews/participation:
+        comment: "コメント"
 
   enumerize:
     peer_review:
@@ -69,3 +73,11 @@ ja:
       title: "新規相互評価"
     edit:
       title: "相互評価編集"
+  peer_reviews:
+    participations:
+      index:
+        title: "相互評価参加者一覧"
+      new:
+        title: "相互評価参加"
+      edit:
+        title: "相互評価参加情報編集"
