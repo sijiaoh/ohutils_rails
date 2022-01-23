@@ -1,5 +1,7 @@
 module Guests
   class UsersController < ApplicationController
+    skip_before_action :store_user_location!, only: %i[new]
+
     def index
       @guest_users = authorize policy_scope([:guests, User]).page(params[:page])
     end
