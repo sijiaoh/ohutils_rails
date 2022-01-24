@@ -81,7 +81,6 @@ ja:
       title: "新規相互評価"
     edit:
       title: "相互評価編集"
-  peer_reviews:
     participations:
       index:
         title: "相互評価参加者一覧"
