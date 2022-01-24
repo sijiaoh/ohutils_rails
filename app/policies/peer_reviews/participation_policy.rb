@@ -9,7 +9,7 @@ module PeerReviews
     end
 
     def create?
-      user.present? && !user.is_guest?
+      user.present?
     end
 
     def update?
