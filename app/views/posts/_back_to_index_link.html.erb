@@ -1,3 +1,3 @@
-<% if policy(:post).index? %>
+<% if policy(post.space).show? %>
   <%= link_to t("back_to_index"), post.space, class: "button-secondary" %>
 <% end %>
