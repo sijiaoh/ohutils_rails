@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :validatable
-  devise :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
   rolify
 
   validates :name, presence: true
@@ -36,5 +36,13 @@ class User < ApplicationRecord
       email: omniauth_data["info"]["email"]
     )
     user
+  end
+
+  private
+
+  def timeout_in
+    return 1.year if is_guest?
+
+    30.minutes
   end
 end
