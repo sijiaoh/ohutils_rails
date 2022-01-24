@@ -12,7 +12,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user.present? && !user.is_guest?
   end
 
   def update?

@@ -2,8 +2,8 @@ class PeerReviewPolicy < ApplicationPolicy
   def index?
     return true if record.is_a? Symbol
 
-    record.all? do |post|
-      Pundit.policy(user, post).show?
+    record.all? do |peer_review|
+      Pundit.policy(user, peer_review).show?
     end
   end
 
@@ -12,7 +12,7 @@ class PeerReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user.present? && !user.is_guest?
   end
 
   def update?
