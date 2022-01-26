@@ -12,4 +12,10 @@
     <div class="font-medium"><%= PeerReview.human_attribute_name :status %>:</div>
     <%= peer_review.status.text %>
   </div>
+
+  <%= turbo_frame_tag(
+    :participations,
+    src: [peer_review, :peer_reviews, :participations],
+    target: :_top
+  ) %>
 </div>

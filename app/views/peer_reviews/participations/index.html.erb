@@ -4,7 +4,13 @@
     <%= render "new_link", peer_review: @peer_review %>
   </div>
 
-  <%= render partial: "index_peer_reviews_participation", collection: @peer_reviews_participations, as: :peer_reviews_participation %>
+  <%= turbo_frame_tag :participations do %>
+    <%= render(
+      partial: "index_peer_reviews_participation",
+      collection: @peer_reviews_participations,
+      as: :peer_reviews_participation
+    ) %>
 
-  <%= paginate @peer_reviews_participations %>
+    <%= paginate @peer_reviews_participations %>
+  <% end %>
 </div>

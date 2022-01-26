@@ -1,7 +1,7 @@
 module PeerReviews
   class ParticipationPolicy < ApplicationPolicy
     def index?
-      user&.is_admin?
+      user.present?
     end
 
     def show?

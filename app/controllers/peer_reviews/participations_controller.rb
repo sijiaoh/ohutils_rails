@@ -4,7 +4,9 @@ module PeerReviews
     before_action :set_peer_reviews_participation, only: %i[show edit update destroy]
 
     def index
-      @peer_reviews_participations = policy_scope(@peer_review.peer_reviews_participations).page params[:page]
+      @peer_reviews_participations = policy_scope(@peer_review.peer_reviews_participations)
+                                     .includes([:user])
+                                     .page(params[:page])
       authorize @peer_reviews_participations
     end
 
