@@ -1,0 +1,3 @@
+<% if policy(peer_reviews_review).destroy? %>
+  <%= button_to t("destroy"), peer_reviews_review, method: :delete, class: "button-danger" %>
+<% end %>

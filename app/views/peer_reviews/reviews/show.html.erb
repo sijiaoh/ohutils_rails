@@ -1,0 +1,9 @@
+<div>
+  <div class="scaffold-buttons my-default">
+    <%= render "edit_link", peer_reviews_review: @peer_reviews_review %>
+    <%= render "destroy_button", peer_reviews_review: @peer_reviews_review %>
+    <%= render "back_to_index_link" %>
+  </div>
+
+  <%= render @peer_reviews_review %>
+</div>

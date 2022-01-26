@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :peer_reviews, param: :hashid, shallow: true do
       namespace :peer_reviews do
         resources :participations, param: :hashid
+        resources :reviews, param: :hashid
       end
     end
   end

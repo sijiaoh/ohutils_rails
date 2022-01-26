@@ -1,0 +1,3 @@
+<% if policy(peer_reviews_review).edit? %>
+  <%= link_to t("edit"), [:edit, peer_reviews_review], class: "button-primary" %>
+<% end %>

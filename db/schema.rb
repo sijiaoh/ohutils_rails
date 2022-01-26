@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_075315) do
+ActiveRecord::Schema.define(version: 2022_01_26_225506) do
 
   create_table "peer_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -36,6 +36,26 @@ ActiveRecord::Schema.define(version: 2022_01_23_075315) do
     t.index ["peer_review_id"], name: "index_peer_reviews_participations_on_peer_review_id"
     t.index ["user_id", "peer_review_id"], name: "index_peer_reviews_participations_on_user_id_and_peer_review_id", unique: true
     t.index ["user_id"], name: "index_peer_reviews_participations_on_user_id"
+  end
+
+  create_table "peer_reviews_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "hashid", null: false
+    t.bigint "peer_review_id", null: false
+    t.bigint "reviewer_id", null: false
+    t.bigint "reviewee_id", null: false
+    t.integer "like", null: false
+    t.integer "technical", null: false
+    t.integer "creativity", null: false
+    t.integer "composition", null: false
+    t.integer "growth", null: false
+    t.string "comment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashid"], name: "index_peer_reviews_reviews_on_hashid", unique: true
+    t.index ["peer_review_id"], name: "index_peer_reviews_reviews_on_peer_review_id"
+    t.index ["reviewee_id"], name: "index_peer_reviews_reviews_on_reviewee_id"
+    t.index ["reviewer_id", "reviewee_id"], name: "index_peer_reviews_reviews_on_reviewer_id_and_reviewee_id", unique: true
+    t.index ["reviewer_id"], name: "index_peer_reviews_reviews_on_reviewer_id"
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -106,6 +126,9 @@ ActiveRecord::Schema.define(version: 2022_01_23_075315) do
   add_foreign_key "peer_reviews", "users"
   add_foreign_key "peer_reviews_participations", "peer_reviews"
   add_foreign_key "peer_reviews_participations", "users"
+  add_foreign_key "peer_reviews_reviews", "peer_reviews"
+  add_foreign_key "peer_reviews_reviews", "peer_reviews_participations", column: "reviewee_id"
+  add_foreign_key "peer_reviews_reviews", "peer_reviews_participations", column: "reviewer_id"
   add_foreign_key "posts", "spaces"
   add_foreign_key "posts", "users"
   add_foreign_key "social_profiles", "users"
