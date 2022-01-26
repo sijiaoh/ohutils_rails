@@ -1,4 +1,4 @@
-<% if policy([:peer_reviews, :participation]).new? %>
+<% if policy([:peer_reviews, :participation]).new? && peer_review.participants.exclude?(current_user) %>
   <%= link_to(
     t("peer_reviews.participations.new.title"),
     [:new, peer_review, :peer_reviews_participation],

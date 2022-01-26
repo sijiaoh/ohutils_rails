@@ -1,21 +1,19 @@
 <div id="<%= dom_id peer_review %>">
   <div class="flex justify-between items-center">
-    <h1 class="title my-default"><%= title peer_review.title %></h1>
+    <div class="flex items-end">
+      <h1 class="title mr-2"><%= title peer_review.title %></h1>
+      <%= peer_review.status.text %>
+    </div>
     <%= render "peer_reviews/participations/new_link", peer_review: %>
   </div>
 
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReview.human_attribute_name :title %>:</div>
-    <%= peer_review.title %>
-  </div>
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReview.human_attribute_name :status %>:</div>
-    <%= peer_review.status.text %>
-  </div>
+  <div class="my-8 mx-4">
+    <h2 class="font-bold text-2xl my-default"><%= t "peer_reviews.participations.index.title" %></h2>
 
-  <%= turbo_frame_tag(
-    :participations,
-    src: [peer_review, :peer_reviews, :participations],
-    target: :_top
-  ) %>
+    <%= turbo_frame_tag(
+      :participations,
+      src: [peer_review, :peer_reviews, :participations],
+      target: :_top
+    ) %>
+  </div>
 </div>

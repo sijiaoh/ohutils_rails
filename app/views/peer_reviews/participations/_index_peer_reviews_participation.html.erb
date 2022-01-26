@@ -1,8 +1,7 @@
-<div id="<%= dom_id peer_reviews_participation %>">
+<div id="<%= dom_id peer_reviews_participation %>" class="flex justify-between">
   <div class="my-default font-bold"><%= peer_reviews_participation.user.name %></div>
 
-  <div class="scaffold-buttons my-default">
-    <%= render "show_link", peer_reviews_participation: %>
+  <div class="horizontal">
     <%= render "edit_link", peer_reviews_participation: %>
   </div>
 </div>
