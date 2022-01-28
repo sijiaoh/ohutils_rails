@@ -52,14 +52,14 @@ module PeerReviews
     end
 
     def not_reviewed_peer_reviews_participations
-      self_reviews = current_user.send_reviews.where peer_review: @peer_review
+      self_reviews = current_user.sended_peer_reviews_reviews.where peer_review: @peer_review
       peer_reviews_participations
         .where.not(id: self_peer_reviews_participation&.id)
         .where.not(id: self_reviews.select(:reviewee_participation_id).distinct)
     end
 
     def reviewed_peer_reviews_participations
-      self_reviews = current_user.send_reviews.where peer_review: @peer_review
+      self_reviews = current_user.sended_peer_reviews_reviews.where peer_review: @peer_review
       peer_reviews_participations
         .where.not(id: self_peer_reviews_participation&.id)
         .where(id: self_reviews.select(:reviewee_participation_id).distinct)

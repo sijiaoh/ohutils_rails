@@ -6,14 +6,14 @@ module PeerReviews
     belongs_to :peer_review
 
     has_many(
-      :send_reviews,
+      :sended_reviews,
       class_name: "PeerReviews::Review",
       foreign_key: :reviewer_participation_id,
       inverse_of: :reviewer_participation,
       dependent: :destroy
     )
     has_many(
-      :receive_reviews,
+      :received_reviews,
       class_name: "PeerReviews::Review",
       foreign_key: :reviewee_participation_id,
       inverse_of: :reviewee_participation,
