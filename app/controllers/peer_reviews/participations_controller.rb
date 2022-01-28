@@ -6,7 +6,8 @@ module PeerReviews
     def index
       @self_peer_reviews_participation = self_peer_reviews_participation
       authorize @self_peer_reviews_participation if @self_peer_reviews_participation.present?
-      @not_reviewed_peer_reviews_participations = authorize not_reviewed_peer_reviews_participations
+      @not_reviewed_peer_reviews_participations = not_reviewed_peer_reviews_participations.includes([:peer_review])
+      authorize @not_reviewed_peer_reviews_participations
       @reviewed_peer_reviews_participations = authorize reviewed_peer_reviews_participations
     end
 
@@ -47,7 +48,7 @@ module PeerReviews
     private
 
     def self_peer_reviews_participation
-      @self_peer_reviews_participation ||= current_user.peer_reviews_participations.find_by peer_review: @peer_review
+      @self_peer_reviews_participation ||= peer_reviews_participations.find_by user: current_user
     end
 
     def not_reviewed_peer_reviews_participations
