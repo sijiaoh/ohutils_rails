@@ -4,10 +4,9 @@ module PeerReviews
     before_action :set_peer_reviews_participation, only: %i[show edit update destroy]
 
     def index
-      @peer_reviews_participations = policy_scope(@peer_review.peer_reviews_participations)
-                                     .includes([:user])
-                                     .page(params[:page])
-      authorize @peer_reviews_participations
+      @self_peer_reviews_participation = authorize self_peer_reviews_participation
+      @reviewed_peer_reviews_participations = authorize reviewed_peer_reviews_participations
+      @not_reviewed_peer_reviews_participations = authorize not_reviewed_peer_reviews_participations
     end
 
     def show; end
@@ -45,6 +44,28 @@ module PeerReviews
     end
 
     private
+
+    def self_peer_reviews_participation
+      @self_peer_reviews_participation = current_user.peer_reviews_participations.find_by! peer_review: @peer_review
+    end
+
+    def not_reviewed_peer_reviews_participations
+      self_reviews = current_user.send_reviews.where peer_review: @peer_review
+      peer_reviews_participations
+        .where.not(id: self_peer_reviews_participation.id)
+        .where.not(id: self_reviews.select(:reviewee_participation_id).distinct)
+    end
+
+    def reviewed_peer_reviews_participations
+      self_reviews = current_user.send_reviews.where peer_review: @peer_review
+      peer_reviews_participations
+        .where.not(id: self_peer_reviews_participation.id)
+        .where(id: self_reviews.select(:reviewee_participation_id).distinct)
+    end
+
+    def peer_reviews_participations
+      policy_scope(@peer_review.peer_reviews_participations).includes([:user, :peer_review]).page(params[:page])
+    end
 
     def set_peer_review
       @peer_review = policy_scope(PeerReview).find_by!(hashid: params[:peer_review_hashid])

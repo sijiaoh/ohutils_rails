@@ -6,6 +6,7 @@ ja:
       peer_review: "相互評価"
       peer_reviews:
         participation: "相互評価参加"
+        review: "評価"
     attributes:
       user:
         name: "名前"
@@ -22,6 +23,13 @@ ja:
         title: "タイトル"
         status: "ステータス"
       peer_reviews/participation:
+        comment: "コメント"
+      peer_reviews/review:
+        like: "好き"
+        technical: "技術力"
+        creativity: "創作性"
+        composition: "構成力"
+        growth: "成長度"
         comment: "コメント"
 
   enumerize:
@@ -88,3 +96,10 @@ ja:
         title: "相互評価参加"
       edit:
         title: "相互評価参加情報編集"
+    reviews:
+      index:
+        title: "評価一覧"
+      new:
+        title: "評価追加"
+      edit:
+        title: "評価編集"

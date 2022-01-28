@@ -1,22 +1,14 @@
-<%= form_with(model: peer_reviews_review, class: "contents") do |form| %>
+<%= form_with(
+  model: peer_reviews_review,
+  url: [
+    peer_review,
+    peer_reviews_review,
+    { peer_reviews_participation_hashid: peer_reviews_participation&.hashid }
+  ],
+  class: "contents"
+) do |form| %>
   <%= render "shared/form_errors", errors: peer_reviews_review.errors %>
 
-  <div class="vertical my-default">
-    <%= form.label :hashid %>
-    <%= form.text_field :hashid, class: "text-field" %>
-  </div>
-  <div class="vertical my-default">
-    <%= form.label :peer_review_id %>
-    <%= form.text_field :peer_review_id, class: "text-field" %>
-  </div>
-  <div class="vertical my-default">
-    <%= form.label :reviewer_id %>
-    <%= form.text_field :reviewer_id, class: "text-field" %>
-  </div>
-  <div class="vertical my-default">
-    <%= form.label :reviewee_id %>
-    <%= form.text_field :reviewee_id, class: "text-field" %>
-  </div>
   <div class="vertical my-default">
     <%= form.label :like %>
     <%= form.number_field :like %>

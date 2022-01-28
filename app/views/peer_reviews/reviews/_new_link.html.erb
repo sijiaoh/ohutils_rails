@@ -1,3 +1,9 @@
-<% if policy(:peer_reviews_review).new? %>
-  <%= link_to t("peer_reviews.reviews.new.title"), new_peer_reviews_review_path, class: "button-primary" %>
+<% if policy([:peer_reviews, :review]).new? %>
+  <%= link_to(
+    t("peer_reviews.reviews.new.title"),
+    [:new, peer_review, :peer_reviews_review, {
+      peer_reviews_participation_hashid: peer_reviews_participation.hashid,
+    }],
+    class: "button-primary"
+  ) %>
 <% end %>

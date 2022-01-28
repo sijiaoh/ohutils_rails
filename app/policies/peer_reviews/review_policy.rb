@@ -1,11 +1,11 @@
 module PeerReviews
-  class ParticipationPolicy < ApplicationPolicy
+  class ReviewPolicy < ApplicationPolicy
     def index?
-      user.present?
+      user&.is_admin?
     end
 
     def show?
-      user.present?
+      user&.is_admin? || user == record.reviewer
     end
 
     def create?
@@ -13,11 +13,11 @@ module PeerReviews
     end
 
     def update?
-      user&.is_admin? || user == record.user
+      user&.is_admin? || user == record.reviewer
     end
 
     def destroy?
-      user&.is_admin? || user == record.user
+      user&.is_admin? || user == record.reviewer
     end
 
     class Scope < Scope

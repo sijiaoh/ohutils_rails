@@ -2,22 +2,6 @@
   <h1 class="title my-default"><%= title PeerReviews::Review.model_name.human %></h1>
 
   <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReviews::Review.human_attribute_name :hashid %>:</div>
-    <%= peer_reviews_review.hashid %>
-  </div>
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReviews::Review.human_attribute_name :peer_review_id %>:</div>
-    <%= peer_reviews_review.peer_review_id %>
-  </div>
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReviews::Review.human_attribute_name :reviewer_id %>:</div>
-    <%= peer_reviews_review.reviewer_id %>
-  </div>
-  <div class="horizontal my-default">
-    <div class="font-medium"><%= PeerReviews::Review.human_attribute_name :reviewee_id %>:</div>
-    <%= peer_reviews_review.reviewee_id %>
-  </div>
-  <div class="horizontal my-default">
     <div class="font-medium"><%= PeerReviews::Review.human_attribute_name :like %>:</div>
     <%= peer_reviews_review.like %>
   </div>

@@ -2,6 +2,11 @@
   <div class="my-default font-bold"><%= peer_reviews_participation.user.name %></div>
 
   <div class="horizontal">
+    <%= render(
+      "peer_reviews/reviews/new_link",
+      peer_review: peer_reviews_participation.peer_review,
+      peer_reviews_participation:
+    ) %>
     <%= render "edit_link", peer_reviews_participation: %>
   </div>
 </div>

@@ -1,8 +1,5 @@
 <div>
-  <div class="flex justify-between items-center">
-    <h1 class="title my-default"><%= title t ".title" %></h1>
-    <%= render "new_link" %>
-  </div>
+  <h1 class="title my-default"><%= title t ".title" %></h1>
 
   <%= render partial: "index_peer_reviews_review", collection: @peer_reviews_reviews, as: :peer_reviews_review %>
 
