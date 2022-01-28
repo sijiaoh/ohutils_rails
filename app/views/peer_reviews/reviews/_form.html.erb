@@ -1,13 +1,9 @@
 <%= form_with(
-  model: peer_reviews_review,
-  url: [
-    peer_review,
-    peer_reviews_review,
-    { peer_reviews_participation_hashid: peer_reviews_participation&.hashid }
-  ],
+  model: review,
+  url: [peer_review, review, { participation_hashid: participation&.hashid }],
   class: "contents"
 ) do |form| %>
-  <%= render "shared/form_errors", errors: peer_reviews_review.errors %>
+  <%= render "shared/form_errors", errors: review.errors %>
 
   <div class="vertical my-default">
     <%= form.label :like %>

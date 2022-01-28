@@ -39,7 +39,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
     subject(:path) do
       new_peer_review_peer_reviews_review_path(
         peer_review,
-        { peer_reviews_participation_hashid: reviewee_participation.hashid }
+        { participation_hashid: reviewee_participation.hashid }
       )
     end
 

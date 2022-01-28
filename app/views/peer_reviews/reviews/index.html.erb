@@ -1,7 +1,7 @@
 <div>
   <h1 class="title my-default"><%= title t ".title" %></h1>
 
-  <%= render partial: "index_peer_reviews_review", collection: @peer_reviews_reviews, as: :peer_reviews_review %>
+  <%= render partial: "index_review", collection: @reviews, as: :review %>
 
-  <%= paginate @peer_reviews_reviews %>
+  <%= paginate @reviews %>
 </div>

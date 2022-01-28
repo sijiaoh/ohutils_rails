@@ -2,14 +2,14 @@
   <h1 class="title my-default"><%= title t ".title" %></h1>
 
   <div class="scaffold-buttons my-default">
-    <%= render "show_link", peer_reviews_review: @peer_reviews_review %>
+    <%= render "show_link", review: @review %>
     <%= render "back_to_index_link", peer_review: @peer_review %>
   </div>
 
   <%= render(
     "form",
     peer_review: nil,
-    peer_reviews_review: @peer_reviews_review,
-    peer_reviews_participation: nil,
+    review: @review,
+    participation: nil,
   ) %>
 </div>
