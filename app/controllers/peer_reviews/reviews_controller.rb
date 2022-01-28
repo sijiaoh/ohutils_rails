@@ -49,8 +49,7 @@ module PeerReviews
     end
 
     def set_participation
-      @participation = policy_scope(@peer_review.peer_reviews_participations)
-                       .find_by!(hashid: params[:participation_hashid])
+      @participation = policy_scope(@peer_review.participations).find_by!(hashid: params[:participation_hashid])
       authorize @participation, :show?
     end
 

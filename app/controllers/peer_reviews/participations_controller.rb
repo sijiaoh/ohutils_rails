@@ -66,7 +66,7 @@ module PeerReviews
     end
 
     def participations
-      policy_scope(@peer_review.peer_reviews_participations).includes([:user])
+      policy_scope(@peer_review.participations).includes([:user])
     end
 
     def set_peer_review
