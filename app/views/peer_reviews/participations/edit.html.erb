@@ -2,9 +2,9 @@
   <h1 class="title my-default"><%= title t ".title" %></h1>
 
   <div class="scaffold-buttons my-default">
-    <%= render "show_link", peer_reviews_participation: @peer_reviews_participation %>
-    <%= render "back_to_index_link", peer_reviews_participation: @peer_reviews_participation %>
+    <%= render "show_link", participation: @participation %>
+    <%= render "back_to_index_link", participation: @participation %>
   </div>
 
-  <%= render "form", peer_review: nil, peer_reviews_participation: @peer_reviews_participation %>
+  <%= render "form", peer_review: nil, participation: @participation %>
 </div>

@@ -1,0 +1,14 @@
+<div id="<%= dom_id participation %>" class="flex justify-between">
+  <div class="my-default font-bold"><%= participation.user.name %></div>
+
+  <div class="horizontal">
+    <%= render(
+      "peer_reviews/reviews/edit_link",
+      peer_reviews_review: PeerReviews::Review.find_by!(
+        reviewer_participation: self_participation,
+        reviewee_participation: participation,
+      )
+    ) %>
+    <%= render "edit_link", participation: %>
+  </div>
+</div>

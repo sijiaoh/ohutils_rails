@@ -1,8 +1,8 @@
-<div id="<%= dom_id peer_reviews_participation %>">
+<div id="<%= dom_id participation %>">
   <h1 class="title my-default"><%= title PeerReviews::Participation.model_name.human %></h1>
 
   <div class="horizontal my-default">
     <div class="font-medium"><%= PeerReviews::Participation.human_attribute_name :comment %>:</div>
-    <%= peer_reviews_participation.comment %>
+    <%= participation.comment %>
   </div>
 </div>
