@@ -5,12 +5,23 @@
   </div>
 
   <%= turbo_frame_tag :participations do %>
+    <% if @self_peer_reviews_participation.present? %>
+      <%= render(
+        "index_self_peer_reviews_participation",
+        peer_reviews_participation: @self_peer_reviews_participation
+      ) %>
+    <% end %>
     <%= render(
-      partial: "index_peer_reviews_participation",
+      partial: "index_not_reviewed_peer_reviews_participation",
       collection: @not_reviewed_peer_reviews_participations,
       as: :peer_reviews_participation
     ) %>
-
-    <%= paginate @not_reviewed_peer_reviews_participations %>
+    <% @reviewed_peer_reviews_participations.each do |reviewed_peer_reviews_participation| %>
+      <%= render(
+        "index_reviewed_peer_reviews_participation",
+        peer_reviews_participation: reviewed_peer_reviews_participation,
+        self_peer_reviews_participation: @self_peer_reviews_participation,
+      ) %>
+    <% end %>
   <% end %>
 </div>
