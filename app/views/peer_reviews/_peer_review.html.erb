@@ -4,7 +4,7 @@
       <h1 class="title mr-2"><%= title peer_review.title %></h1>
       <%= peer_review.status.text %>
     </div>
-    <div>
+    <div class="horizontal">
       <%= render "guests/users/new_link", peer_review: %>
       <%= render "peer_reviews/participations/new_link", peer_review: %>
       <%= render "edit_link", peer_review: %>
