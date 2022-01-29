@@ -7,14 +7,9 @@ export default class extends Controller {
   async connect() {
     this.setIdToTextarea();
     await this.mountTinymce();
-    document.addEventListener("turbo:before-cache", this.remove);
   }
 
-  disconnect() {
-    document.removeEventListener("turbo:before-cache", this.remove);
-  }
-
-  remove() {
+  unmount() {
     tinymce.remove(this.selector);
   }
 

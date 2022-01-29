@@ -6,6 +6,8 @@ export default class extends Controller {
   static values = { content: String };
 
   connect() {
+    this._content = this.contentValue;
+
     const renderer = new marked.Renderer();
     const renderer2 = new marked.Renderer();
     renderer.code = (code, lang, ...args) => {
@@ -27,5 +29,9 @@ export default class extends Controller {
 
     // Hide source file from DebTools.
     this.contentValue = "";
+  }
+
+  restoreContentValue() {
+    this.contentValue = this._content;
   }
 }
