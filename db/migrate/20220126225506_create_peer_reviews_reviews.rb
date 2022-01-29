@@ -5,7 +5,7 @@ class CreatePeerReviewsReviews < ActiveRecord::Migration[7.0]
       t.references :peer_review, null: false, foreign_key: true
       t.references :reviewer_participation, null: false, foreign_key: { to_table: :peer_reviews_participations }
       t.references :reviewee_participation, null: false, foreign_key: { to_table: :peer_reviews_participations }
-      t.integer :like, null: false
+      t.integer :fun, null: false
       t.integer :technical, null: false
       t.integer :creativity, null: false
       t.integer :composition, null: false

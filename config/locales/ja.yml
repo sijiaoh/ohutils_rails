@@ -25,7 +25,7 @@ ja:
       peer_reviews/participation:
         comment: "コメント"
       peer_reviews/review:
-        like: "好き"
+        fun: "面白さ"
         technical: "技術力"
         creativity: "創作性"
         composition: "構成力"

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_225506) do
     t.bigint "peer_review_id", null: false
     t.bigint "reviewer_participation_id", null: false
     t.bigint "reviewee_participation_id", null: false
-    t.integer "like", null: false
+    t.integer "fun", null: false
     t.integer "technical", null: false
     t.integer "creativity", null: false
     t.integer "composition", null: false

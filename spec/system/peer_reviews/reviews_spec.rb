@@ -48,7 +48,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
       click_on I18n.t "peer_reviews.reviews.new.title"
       expect(page).to have_current_path path
 
-      fill_in to_label(:like), with: review.like
+      fill_in to_label(:fun), with: review.fun
       fill_in to_label(:technical), with: review.technical
       fill_in to_label(:creativity), with: review.creativity
       fill_in to_label(:composition), with: review.composition
@@ -58,7 +58,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
       click_on I18n.t "helpers.submit.create"
       expect(page).not_to have_current_path path
 
-      attributes = [:like, :technical, :creativity, :composition, :growth, :comment]
+      attributes = [:fun, :technical, :creativity, :composition, :growth, :comment]
       expect(PeerReviews::Review.first.slice(*attributes)).to eq review.slice(*attributes)
     end
   end
@@ -75,7 +75,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
     it "change existing review" do
       visit path
 
-      fill_in to_label(:like), with: review_params.like
+      fill_in to_label(:fun), with: review_params.fun
       fill_in to_label(:technical), with: review_params.technical
       fill_in to_label(:creativity), with: review_params.creativity
       fill_in to_label(:composition), with: review_params.composition
@@ -85,7 +85,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
       click_on I18n.t "helpers.submit.update"
       expect(page).to have_current_path peer_reviews_review_path(review)
 
-      attributes = [:like, :technical, :creativity, :composition, :growth, :comment]
+      attributes = [:fun, :technical, :creativity, :composition, :growth, :comment]
       expect(
         PeerReviews::Review.first.slice(*attributes)
       ).to eq review_params.slice(*attributes)

@@ -58,7 +58,7 @@ module PeerReviews
     end
 
     def review_params
-      params.require(:peer_reviews_review).permit(:like, :technical, :creativity, :composition, :growth, :comment)
+      params.require(:peer_reviews_review).permit(:fun, :technical, :creativity, :composition, :growth, :comment)
     end
 
     def create_params
