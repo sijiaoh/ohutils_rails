@@ -4,7 +4,10 @@
       <h1 class="title mr-2"><%= title peer_review.title %></h1>
       <%= peer_review.status.text %>
     </div>
-    <%= render "peer_reviews/participations/new_link", peer_review: %>
+    <div>
+      <%= render "guests/users/new_link", peer_review: %>
+      <%= render "peer_reviews/participations/new_link", peer_review: %>
+    </div>
   </div>
 
   <div class="my-8 mx-4">
