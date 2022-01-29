@@ -1,7 +1,3 @@
-<% if policy([:peer_reviews, :participation]).index? %>
-  <%= link_to(
-    t("back_to_index"),
-    [participation.peer_review, :peer_reviews_participations],
-    class: "button-secondary"
-  ) %>
+<% if policy(peer_review).show? %>
+  <%= link_to t("back_to_index"), peer_review, class: "button-secondary" %>
 <% end %>

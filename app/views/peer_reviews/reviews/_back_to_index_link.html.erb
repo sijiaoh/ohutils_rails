@@ -1,3 +1,3 @@
-<% if policy([:peer_reviews, :review]).index? %>
+<% if policy(peer_review).show? %>
   <%= link_to t("back_to_index"), peer_review, class: "button-secondary" %>
 <% end %>
