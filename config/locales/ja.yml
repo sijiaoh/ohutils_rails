@@ -49,6 +49,10 @@ ja:
   created_at: "作成日"
   updated_at: "更新日"
 
+  application:
+    success_to_create: "%{model_name}の作成に成功しました。"
+    success_to_update: "%{model_name}の更新に成功しました。"
+    success_to_destroy: "%{model_name}の削除に成功しました。"
   session:
     new:
       title: "登録 / ログイン"
