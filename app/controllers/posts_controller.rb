@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @posts = authorize policy_scope(@space.posts)
              .order(created_at: :desc)
-             .eager_load([:user])
+             .includes([:user])
              .page(params[:page])
              .per(12)
   end
