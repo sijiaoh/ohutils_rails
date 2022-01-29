@@ -22,7 +22,7 @@ module PeerReviews
       skip_policy_scope
 
       if @review.save
-        redirect_to @review, notice: "Review was successfully created."
+        redirect_to @review, notice: notice_message(Review)
       else
         render :new, status: :unprocessable_entity
       end
@@ -30,7 +30,7 @@ module PeerReviews
 
     def update
       if @review.update(review_params)
-        redirect_to @review, notice: "Review was successfully updated."
+        redirect_to @review, notice: notice_message(Review)
       else
         render :edit, status: :unprocessable_entity
       end
@@ -38,7 +38,7 @@ module PeerReviews
 
     def destroy
       @review.destroy
-      redirect_to @review.peer_review, notice: "Review was successfully destroyed."
+      redirect_to @review.peer_review, notice: notice_message(Review)
     end
 
     private

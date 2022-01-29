@@ -20,7 +20,7 @@ class SpacesController < ApplicationController
     skip_policy_scope
 
     if @space.save
-      redirect_to @space, notice: "Space was successfully created."
+      redirect_to @space, notice: notice_message(Space)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class SpacesController < ApplicationController
 
   def update
     if @space.update(space_params)
-      redirect_to @space, notice: "Space was successfully updated."
+      redirect_to @space, notice: notice_message(Space)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class SpacesController < ApplicationController
 
   def destroy
     @space.destroy
-    redirect_to spaces_url, notice: "Space was successfully destroyed."
+    redirect_to spaces_url, notice: notice_message(Space)
   end
 
   private

@@ -23,7 +23,7 @@ class PeerReviewsController < ApplicationController
     skip_policy_scope
 
     if @peer_review.save
-      redirect_to @peer_review, notice: "Peer review was successfully created."
+      redirect_to @peer_review, notice: notice_message(PeerReview)
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class PeerReviewsController < ApplicationController
 
   def update
     if @peer_review.update(peer_review_params)
-      redirect_to @peer_review, notice: "Peer review was successfully updated."
+      redirect_to @peer_review, notice: notice_message(PeerReview)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class PeerReviewsController < ApplicationController
 
   def destroy
     @peer_review.destroy
-    redirect_to @peer_review.space, notice: "Peer review was successfully destroyed."
+    redirect_to @peer_review.space, notice: notice_message(PeerReview)
   end
 
   private
