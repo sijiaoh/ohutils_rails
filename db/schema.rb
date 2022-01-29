@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_225506) do
     t.integer "creativity", null: false
     t.integer "composition", null: false
     t.integer "growth", null: false
-    t.string "comment", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["hashid"], name: "index_peer_reviews_reviews_on_hashid", unique: true

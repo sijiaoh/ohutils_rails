@@ -10,7 +10,7 @@ class CreatePeerReviewsReviews < ActiveRecord::Migration[7.0]
       t.integer :creativity, null: false
       t.integer :composition, null: false
       t.integer :growth, null: false
-      t.string :comment, null: false
+      t.text :comment, null: false
 
       t.timestamps
 
