@@ -62,7 +62,7 @@ RSpec.describe "peer_reviews/participations", type: :system do
       fill_in to_label(:comment), with: comment
 
       click_on I18n.t "helpers.submit.update"
-      expect(page).to have_current_path peer_reviews_participation_path(participation)
+      expect(page).to have_current_path peer_review_path(peer_review)
 
       attributes = [:user_id, :peer_review_id, :comment]
       expect(
