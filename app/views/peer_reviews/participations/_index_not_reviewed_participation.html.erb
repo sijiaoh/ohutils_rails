@@ -7,6 +7,9 @@
       peer_review: participation.peer_review,
       participation:
     ) %>
-    <%= render "edit_link", participation: %>
+    <div class="horizontal">
+      <%= render "show_link", participation: %>
+      <%= render "edit_link", participation: %>
+    </div>
   </div>
 </div>

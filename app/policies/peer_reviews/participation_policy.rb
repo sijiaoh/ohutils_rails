@@ -17,7 +17,7 @@ module PeerReviews
     end
 
     def destroy?
-      user&.is_admin? || user == record.user
+      user&.is_admin?
     end
 
     class Scope < Scope
