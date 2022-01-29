@@ -5,7 +5,6 @@ class PeerReviewsController < ApplicationController
   def index
     @peer_reviews = authorize policy_scope(@space.peer_reviews)
                     .order(created_at: :desc)
-                    .eager_load([:user])
                     .page(params[:page])
   end
 
