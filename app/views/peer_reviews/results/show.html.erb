@@ -1,0 +1,22 @@
+<div>
+  <h1 class="title my-default"><%= title t ".title" %></h1>
+
+  <%= turbo_frame_tag :result do %>
+    <h2 class="bold text-2xl my-default"><%= t ".average_scores" %></h2>
+
+    <% PeerReviews::Result::SCORE_KEYS.each do |score_key| %>
+      <div>
+        <%= PeerReviews::Review.human_attribute_name score_key %>:
+        <%= @result.send score_key %>
+      </div>
+    <% end %>
+
+    <h2 class="bold text-2xl my-default"><%= t ".comments" %></h2>
+
+    <% @result.comments.each do |comment| %>
+      <div class="my-default">
+        <%= comment %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -12,12 +12,22 @@
   </div>
 
   <div class="my-8 mx-4">
-    <h2 class="font-bold text-2xl my-default"><%= t "peer_reviews.participations.index.title" %></h2>
+    <% if peer_review.status.doing? %>
+      <h2 class="font-bold text-2xl my-default"><%= t "peer_reviews.participations.index.title" %></h2>
 
-    <%= turbo_frame_tag(
-      :participations,
-      src: [peer_review, :peer_reviews, :participations],
-      target: :_top
-    ) %>
+      <%= turbo_frame_tag(
+        :participations,
+        src: [peer_review, :peer_reviews, :participations],
+        target: :_top
+      ) %>
+    <% else %>
+      <h2 class="font-bold text-2xl my-default"><%= t "peer_reviews.results.show.title" %></h2>
+
+      <%= turbo_frame_tag(
+        :result,
+        src: [peer_review, :peer_reviews, :result],
+        target: :_top
+      ) %>
+    <% end %>
   </div>
 </div>

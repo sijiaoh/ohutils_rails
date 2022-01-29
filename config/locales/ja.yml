@@ -107,3 +107,8 @@ ja:
         title: "評価追加"
       edit:
         title: "評価編集"
+    results:
+      show:
+        title: "リザルト"
+        average_scores: "平均点"
+        comments: "コメント"
