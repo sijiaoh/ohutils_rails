@@ -51,18 +51,23 @@ module PeerReviews
       @self_participation ||= participations.find_by user: current_user
     end
 
-    def not_reviewed_participations
+    def reviewed_participation_ids
+      return [] unless user_signed_in?
+
       self_reviews = current_user.sended_peer_reviews_reviews.where peer_review: @peer_review
+      self_reviews.select(:reviewee_participation_id).distinct
+    end
+
+    def not_reviewed_participations
       participations
         .where.not(id: self_participation&.id)
-        .where.not(id: self_reviews.select(:reviewee_participation_id).distinct)
+        .where.not(id: reviewed_participation_ids)
     end
 
     def reviewed_participations
-      self_reviews = current_user.sended_peer_reviews_reviews.where peer_review: @peer_review
       participations
         .where.not(id: self_participation&.id)
-        .where(id: self_reviews.select(:reviewee_participation_id).distinct)
+        .where(id: reviewed_participation_ids)
     end
 
     def participations

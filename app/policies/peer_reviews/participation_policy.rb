@@ -1,7 +1,7 @@
 module PeerReviews
   class ParticipationPolicy < ApplicationPolicy
     def index?
-      user.present?
+      true
     end
 
     def show?
