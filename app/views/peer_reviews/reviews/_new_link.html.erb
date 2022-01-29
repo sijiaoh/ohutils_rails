@@ -1,4 +1,4 @@
-<% if policy([:peer_reviews, :review]).new? %>
+<% if policy([:peer_reviews, :review]).new? && peer_review.participating?(current_user) %>
   <%= link_to(
     t("peer_reviews.reviews.new.title"),
     [:new, peer_review, :peer_reviews_review, { participation_hashid: participation.hashid }],

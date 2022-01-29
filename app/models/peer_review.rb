@@ -15,4 +15,8 @@ class PeerReview < ApplicationRecord
     doing: 0,
     done: 1
   }, default: :doing
+
+  def participating?(user)
+    participants.include? user
+  end
 end
