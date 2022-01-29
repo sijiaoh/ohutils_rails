@@ -26,7 +26,7 @@ module PeerReviews
       skip_policy_scope
 
       if @participation.save
-        redirect_to @participation, notice: notice_message(Participation)
+        redirect_to @peer_review, notice: notice_message(Participation)
       else
         render :new, status: :unprocessable_entity
       end
@@ -34,7 +34,7 @@ module PeerReviews
 
     def update
       if @participation.update(participation_params)
-        redirect_to @participation, notice: notice_message(Participation)
+        redirect_to @participation.peer_review, notice: notice_message(Participation)
       else
         render :edit, status: :unprocessable_entity
       end
