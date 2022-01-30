@@ -36,7 +36,7 @@ ja:
     peer_review:
       status:
         doing: "実施中"
-        done: "完了"
+        done: "終了"
 
   title: "Ohutils"
   sign_out: サインアウト
@@ -93,6 +93,8 @@ ja:
       title: "新規相互評価"
     edit:
       title: "相互評価編集"
+    peer_review:
+      peer_review_has_ended: "終了しました。"
     participations:
       index:
         title: "相互評価参加者一覧"

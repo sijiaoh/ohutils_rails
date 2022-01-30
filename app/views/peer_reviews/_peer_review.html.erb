@@ -5,8 +5,10 @@
       <%= peer_review.status.text %>
     </div>
     <div class="horizontal">
-      <%= render "guests/users/new_link", peer_review: %>
-      <%= render "peer_reviews/participations/new_link", peer_review: %>
+      <% if peer_review.status.doing? %>
+        <%= render "guests/users/new_link", peer_review: %>
+        <%= render "peer_reviews/participations/new_link", peer_review: %>
+      <% end %>
       <%= render "edit_link", peer_review: %>
     </div>
   </div>
@@ -20,7 +22,7 @@
         src: [peer_review, :peer_reviews, :participations],
         target: :_top
       ) %>
-    <% else %>
+    <% elsif peer_review.participating? current_user %>
       <h2 class="font-bold text-2xl my-default"><%= t "peer_reviews.results.show.title" %></h2>
 
       <%= turbo_frame_tag(
@@ -28,6 +30,8 @@
         src: [peer_review, :peer_reviews, :result],
         target: :_top
       ) %>
+    <% else %>
+      <h2 class="font-bold text-2xl my-default"><%= t ".peer_review_has_ended" %></h2>
     <% end %>
   </div>
 </div>
