@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_26_225506) do
+ActiveRecord::Schema.define(version: 2022_01_30_161814) do
+
+  create_table "guest_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "hashid"
+    t.string "student_number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashid"], name: "index_guest_profiles_on_hashid", unique: true
+    t.index ["student_number"], name: "index_guest_profiles_on_student_number", unique: true
+    t.index ["user_id"], name: "index_guest_profiles_on_user_id"
+  end
 
   create_table "peer_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -122,6 +133,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_225506) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "guest_profiles", "users"
   add_foreign_key "peer_reviews", "spaces"
   add_foreign_key "peer_reviews", "users"
   add_foreign_key "peer_reviews_participations", "peer_reviews"

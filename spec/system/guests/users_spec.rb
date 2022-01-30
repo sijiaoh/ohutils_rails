@@ -15,11 +15,20 @@ RSpec.describe "guest users", type: :system do
 
   describe "sign up" do
     let(:path) { new_guests_user_path }
+    let(:guest_profile_params) { build :guest_profile }
 
     it "creates new user and signs in" do
       visit path
 
       fill_in User.human_attribute_name(:name), with: build(:user).name
+      fill_in(
+        GuestProfile.human_attribute_name(:student_number),
+        with: guest_profile_params.student_number
+      )
+      fill_in(
+        GuestProfile.human_attribute_name(:student_number_confirmation),
+        with: guest_profile_params.student_number
+      )
       check User.human_attribute_name(:terms_of_service)
 
       expect do
@@ -44,8 +53,6 @@ RSpec.describe "guest users", type: :system do
       expect(page).to have_button I18n.t("sign_out")
 
       click_on I18n.t("sign_out")
-      page.accept_confirm I18n.t("guests.users.sign_out_warning")
-
       expect(page).not_to have_button I18n.t("sign_out")
     end
   end

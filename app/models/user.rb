@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :terms_of_service, acceptance: true
 
   has_many :social_profiles, dependent: :destroy
+  has_one :guest_profile, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   has_many :peer_reviews, dependent: :destroy
@@ -35,9 +36,24 @@ class User < ApplicationRecord
     social_profile&.user
   end
 
-  def self.create_guest(user_params)
-    user = User.create(user_params)
-    user.add_role :guest if user.persisted?
+  def self.create_guest(params) # rubocop:disable Metrics/MethodLength
+    guest_profile = GuestProfile.new params[:guest_profile]
+    user = User.new params.except(:guest_profile).merge(guest_profile:)
+    guest_profile.user = user
+
+    guest_profile.valid?
+    user.valid?
+
+    ActiveRecord::Base.transaction do
+      user.save!
+      guest_profile.save!
+
+      user.add_role :guest if user.persisted?
+      raise "Failed to add guest role to user" unless user.is_guest?
+
+      user
+    end
+  rescue ActiveRecord::RecordInvalid
     user
   end
 

@@ -1,0 +1,33 @@
+<%= form_with(model: [:guests, user], class: "contents") do |form| %>
+  <% if error_messages.present? %>
+    <div class="scaffold-errors my-default">
+      <ul>
+        <% error_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="grid grid-cols-[auto_auto] gap-4 items-center my-default">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "text-field" %>
+
+    <%= form.fields_for user.guest_profile do |f| %>
+      <%= f.label :student_number %>
+      <%= f.text_field :student_number, class: "text-field" %>
+
+      <%= f.label :student_number_confirmation %>
+      <%= f.text_field :student_number_confirmation, class: "text-field" %>
+    <% end %>
+  </div>
+  <div class="my-default">
+    <%= form.check_box :terms_of_service %>
+    <%= form.label :terms_of_service, User.human_attribute_name(:terms_of_service) %>
+  </div>
+
+  <div>
+    <%= form.submit class: "button-primary my-default" %>
+  </div>
+<% end %>

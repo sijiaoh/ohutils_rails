@@ -4,13 +4,11 @@
   </div>
   <div>
     <% if user.present? %>
-      <% confirm = user.is_guest? ? t("guests.users.sign_out_warning") : nil %>
       <%= button_to(
         t("sign_out"),
         sign_out_path,
         method: :delete,
         class: "button-primary",
-        form: { data: { turbo_confirm: confirm } }
       ) %>
     <% elsif !Rails.env.production? %>
       <%= link_to t("session.new.title"), sign_in_path, class: "button-primary" %>
