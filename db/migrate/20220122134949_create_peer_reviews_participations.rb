@@ -8,7 +8,7 @@ class CreatePeerReviewsParticipations < ActiveRecord::Migration[7.0]
 
       t.timestamps
 
-      t.index [:user_id, :peer_review_id], unique: true
+      t.index %i[user_id peer_review_id], unique: true
     end
     add_index :peer_reviews_participations, :hashid, unique: true
   end

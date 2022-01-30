@@ -42,7 +42,7 @@ RSpec.describe "peer_reviews/participations", type: :system do
       click_on I18n.t "helpers.submit.create"
       expect(page).not_to have_current_path path
 
-      attributes = [:user_id, :peer_review_id, :comment]
+      attributes = %i[user_id peer_review_id comment]
       expect(PeerReviews::Participation.first.slice(*attributes)).to eq participation.slice(*attributes)
     end
   end
@@ -64,7 +64,7 @@ RSpec.describe "peer_reviews/participations", type: :system do
       click_on I18n.t "helpers.submit.update"
       expect(page).to have_current_path peer_review_path(peer_review)
 
-      attributes = [:user_id, :peer_review_id, :comment]
+      attributes = %i[user_id peer_review_id comment]
       expect(
         PeerReviews::Participation.first.slice(*attributes)
       ).to eq participation.slice(*attributes).merge(comment:)

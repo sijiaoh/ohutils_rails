@@ -40,7 +40,7 @@ RSpec.describe "Peer reviews", type: :system do
       click_on I18n.t "helpers.submit.create"
       expect(page).not_to have_current_path path
 
-      attributes = [:title, :status]
+      attributes = %i[title status]
       expect(PeerReview.first.slice(*attributes)).to eq peer_review.slice(*attributes)
     end
   end
@@ -62,7 +62,7 @@ RSpec.describe "Peer reviews", type: :system do
       expect(page).to have_current_path peer_review_path(existing_peer_review)
 
       existing_peer_review.reload
-      attributes = [:title, :status]
+      attributes = %i[title status]
       expect(existing_peer_review.slice(*attributes)).to eq peer_review.slice(*attributes)
     end
   end

@@ -13,7 +13,7 @@ module Guests
     end
 
     def create
-      authorize [:guests, :user]
+      authorize %i[guests user]
       skip_policy_scope
       @guest_user = User.create_guest guest_user_params
 

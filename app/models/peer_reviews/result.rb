@@ -1,6 +1,6 @@
 module PeerReviews
   class Result
-    SCORE_KEYS = [:fun, :technical, :creativity, :composition, :growth].freeze
+    SCORE_KEYS = %i[fun technical creativity composition growth].freeze
 
     attr_accessor(*SCORE_KEYS)
 
