@@ -49,46 +49,4 @@ RSpec.describe User, type: :model do
         .to change(described_class, :count).by(1).and change(SocialProfile, :count).by(1)
     end
   end
-
-  describe "#timeout_in" do
-    include Devise::Test::IntegrationHelpers
-
-    subject(:user) { create :user }
-
-    before do
-      sign_in user
-    end
-
-    context "when is not student" do
-      context "when 29 minutes have passed" do # rubocop:disable RSpec/NestedGroups
-        it "does not timedout" do
-          expect(user).not_to be_timedout(29.minutes.ago)
-        end
-      end
-
-      context "when 30 minutes have passed" do # rubocop:disable RSpec/NestedGroups
-        it "timedouts" do
-          expect(user).to be_timedout(30.minutes.ago)
-        end
-      end
-    end
-
-    context "when is student" do
-      before do
-        user.add_role :student
-      end
-
-      context "when 364 days have passed" do # rubocop:disable RSpec/NestedGroups
-        it "does not timedout" do
-          expect(user).not_to be_timedout(364.days.ago)
-        end
-      end
-
-      context "when 1 years have passed" do # rubocop:disable RSpec/NestedGroups
-        it "timedouts" do
-          expect(user).to be_timedout(1.year.ago)
-        end
-      end
-    end
-  end
 end

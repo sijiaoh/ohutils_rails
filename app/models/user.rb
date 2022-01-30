@@ -66,12 +66,4 @@ class User < ApplicationRecord
     )
     user
   end
-
-  private
-
-  def timeout_in
-    return 1.year if is_student?
-
-    30.minutes
-  end
 end
