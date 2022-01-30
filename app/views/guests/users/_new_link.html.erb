@@ -1,3 +1,0 @@
-<% if policy([:guests, :user]).new? %>
-  <%= link_to t("guests.users.new.title"), [:new, :guests, :user], class: "button-primary" %>
-<% end %>

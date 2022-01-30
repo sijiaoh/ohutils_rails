@@ -1,6 +1,6 @@
-class CreateGuestProfiles < ActiveRecord::Migration[7.0]
+class CreateStudentProfiles < ActiveRecord::Migration[7.0]
   def change
-    create_table :guest_profiles do |t|
+    create_table :student_profiles do |t|
       t.references :user, null: false, foreign_key: true
       t.string :hashid
       t.string :student_number, null: false

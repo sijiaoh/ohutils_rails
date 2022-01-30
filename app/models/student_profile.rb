@@ -1,4 +1,4 @@
-class GuestProfile < ApplicationRecord
+class StudentProfile < ApplicationRecord
   belongs_to :user
 
   validates :student_number, presence: true, confirmation: true

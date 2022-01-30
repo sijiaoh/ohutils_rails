@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :terms_of_service, acceptance: true
 
   has_many :social_profiles, dependent: :destroy
-  has_one :guest_profile, dependent: :destroy
+  has_one :student_profile, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   has_many :peer_reviews, dependent: :destroy
@@ -36,20 +36,20 @@ class User < ApplicationRecord
     social_profile&.user
   end
 
-  def self.create_guest(params) # rubocop:disable Metrics/MethodLength
-    guest_profile = GuestProfile.new params[:guest_profile]
-    user = User.new params.except(:guest_profile).merge(guest_profile:)
-    guest_profile.user = user
+  def self.create_student(params) # rubocop:disable Metrics/MethodLength
+    student_profile = StudentProfile.new params[:student_profile]
+    user = User.new params.except(:student_profile).merge(student_profile:)
+    student_profile.user = user
 
-    guest_profile.valid?
+    student_profile.valid?
     user.valid?
 
     ActiveRecord::Base.transaction do
       user.save!
-      guest_profile.save!
+      student_profile.save!
 
-      user.add_role :guest if user.persisted?
-      raise "Failed to add guest role to user" unless user.is_guest?
+      user.add_role :student if user.persisted?
+      raise "Failed to add student role to user" unless user.is_student?
 
       user
     end
@@ -70,7 +70,7 @@ class User < ApplicationRecord
   private
 
   def timeout_in
-    return 1.year if is_guest?
+    return 1.year if is_student?
 
     30.minutes
   end

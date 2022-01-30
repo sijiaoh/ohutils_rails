@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2022_01_30_161814) do
 
-  create_table "guest_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "hashid"
-    t.string "student_number", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["hashid"], name: "index_guest_profiles_on_hashid", unique: true
-    t.index ["student_number"], name: "index_guest_profiles_on_student_number", unique: true
-    t.index ["user_id"], name: "index_guest_profiles_on_user_id"
-  end
-
   create_table "peer_reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "space_id", null: false
@@ -117,6 +106,17 @@ ActiveRecord::Schema.define(version: 2022_01_30_161814) do
     t.index ["hashid"], name: "index_spaces_on_hashid", unique: true
   end
 
+  create_table "student_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "hashid"
+    t.string "student_number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashid"], name: "index_student_profiles_on_hashid", unique: true
+    t.index ["student_number"], name: "index_student_profiles_on_student_number", unique: true
+    t.index ["user_id"], name: "index_student_profiles_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -133,7 +133,6 @@ ActiveRecord::Schema.define(version: 2022_01_30_161814) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
-  add_foreign_key "guest_profiles", "users"
   add_foreign_key "peer_reviews", "spaces"
   add_foreign_key "peer_reviews", "users"
   add_foreign_key "peer_reviews_participations", "peer_reviews"
@@ -144,4 +143,5 @@ ActiveRecord::Schema.define(version: 2022_01_30_161814) do
   add_foreign_key "posts", "spaces"
   add_foreign_key "posts", "users"
   add_foreign_key "social_profiles", "users"
+  add_foreign_key "student_profiles", "users"
 end

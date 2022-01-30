@@ -1,4 +1,4 @@
-module Guests
+module Students
   class UserPolicy < ApplicationPolicy
     def index?
       user&.is_admin?

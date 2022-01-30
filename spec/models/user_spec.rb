@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
       sign_in user
     end
 
-    context "when is not guest" do
+    context "when is not student" do
       context "when 29 minutes have passed" do # rubocop:disable RSpec/NestedGroups
         it "does not timedout" do
           expect(user).not_to be_timedout(29.minutes.ago)
@@ -73,9 +73,9 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context "when is guest" do
+    context "when is student" do
       before do
-        user.add_role :guest
+        user.add_role :student
       end
 
       context "when 364 days have passed" do # rubocop:disable RSpec/NestedGroups

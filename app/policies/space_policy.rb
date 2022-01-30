@@ -8,7 +8,7 @@ class SpacePolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && !user.is_guest?
+    user.present? && !user.is_student?
   end
 
   def update?
