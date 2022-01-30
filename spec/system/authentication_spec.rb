@@ -4,9 +4,9 @@ RSpec.describe "authentication", type: :system do
   describe "sign up" do
     it "creates new user and signs in" do
       visit "/"
-      click_on I18n.t("session.new.title")
+      click_on I18n.t("sessions.new.title")
       expect(page).to have_current_path sign_in_path
-      click_on I18n.t("session.new.with_google")
+      click_on I18n.t("sessions.new.with_google")
       expect(page).to have_current_path sign_up_path
 
       fill_in User.human_attribute_name(:name), with: build(:user).name
@@ -35,7 +35,7 @@ RSpec.describe "authentication", type: :system do
       user.save!
 
       visit sign_in_path
-      click_on I18n.t("session.new.with_google")
+      click_on I18n.t("sessions.new.with_google")
       expect(page).to have_current_path root_path
       expect(page).to have_button I18n.t("sign_out")
     end

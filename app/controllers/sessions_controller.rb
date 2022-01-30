@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   skip_before_action :store_user_location!, only: %i[new]
 
   def new

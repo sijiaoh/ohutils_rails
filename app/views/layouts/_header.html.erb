@@ -11,7 +11,7 @@
         class: "button-primary",
       ) %>
     <% elsif !Rails.env.production? %>
-      <%= link_to t("session.new.title"), sign_in_path, class: "button-primary" %>
+      <%= link_to t("sessions.new.title"), sign_in_path, class: "button-primary" %>
     <% end %>
   </div>
 </header>
