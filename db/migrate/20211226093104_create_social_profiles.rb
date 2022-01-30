@@ -8,8 +8,8 @@ class CreateSocialProfiles < ActiveRecord::Migration[7.0]
 
       t.timestamps
 
-      t.index [:user_id, :provider], unique: true
-      t.index [:provider, :uid], unique: true
+      t.index %i[user_id provider], unique: true
+      t.index %i[provider uid], unique: true
     end
   end
 end

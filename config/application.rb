@@ -33,7 +33,7 @@ module Ohutils
     config.time_zone = "Tokyo"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.i18n.available_locales = [:en, :ja]
+    config.i18n.available_locales = %i[en ja]
     config.i18n.default_locale = :ja
 
     config.generators do |g|

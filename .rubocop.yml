@@ -1,4 +1,3 @@
-inherit_from: .rubocop_todo.yml
 require:
   - rubocop-performance
   - rubocop-rspec
@@ -8,14 +7,12 @@ AllCops:
   TargetRubyVersion: 3.1
   NewCops: enable
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
-
-Metrics/BlockLength:
-  Exclude:
-    - config/**/*.rb
-    - spec/**/*.rb
 
 Style/Documentation:
   Enabled: false
@@ -23,6 +20,11 @@ Style/Documentation:
 Style/StructInheritance:
   Exclude:
     - app/policies/**/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*.rb
+    - spec/**/*.rb
 
 RSpec/ExampleLength:
   Exclude:

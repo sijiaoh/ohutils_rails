@@ -49,7 +49,7 @@ RSpec.describe "Posts", type: :system do
       click_on I18n.t "helpers.submit.create"
       expect(page).not_to have_current_path path
 
-      attributes = [:title, :content, :published]
+      attributes = %i[title content published]
       expect(Post.first.slice(*attributes)).to eq post.slice(*attributes)
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe "Posts", type: :system do
       expect(page).to have_current_path post_path(existing_post)
 
       existing_post.reload
-      attributes = [:title, :content, :published]
+      attributes = %i[title content published]
       expect(existing_post.slice(*attributes)).to eq post.slice(*attributes)
     end
   end
