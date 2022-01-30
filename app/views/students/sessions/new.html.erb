@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center">
+  <h1 class="title my-default"><%= title t ".title" %></h1>
+
+  <% if @show_failed_to_sign_in_message %>
+    <div class="scaffold-errors my-default">
+      <%= t ".failed_to_sign_in" %>
+    </div>
+  <% end %>
+
+  <%= form_with(
+    model: @student_profile,
+    url: students_sign_in_path,
+    class: "flex flex-col items-center"
+  ) do |form| %>
+    <div class="horizontal my-default">
+      <%= form.label :student_number %>
+      <%= form.text_field :student_number, class: "text-field" %>
+    </div>
+
+    <%= form.submit t(".sign_in"), class: "button-primary my-default" %>
+  <% end %>
+
+  <%= t ".or" %>
+
+  <%= link_to t(".sign_up"), students_sign_up_path, class: "button-primary my-default" %>
+</div>

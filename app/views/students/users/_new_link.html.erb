@@ -1,3 +1,3 @@
 <% if policy([:students, :user]).new? %>
-  <%= link_to t("students.users.new.title"), [:new, :students, :user], class: "button-primary" %>
+  <%= link_to t("students.users.new.title"), students_sign_up_path, class: "button-primary" %>
 <% end %>

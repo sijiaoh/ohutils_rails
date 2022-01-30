@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   resources :users, param: :hashid, only: %i[index show create]
   namespace :students do
-    resources :users, only: %i[index new create]
+    get "sign_in", to: "sessions#new"
+    post "sign_in", to: "sessions#create"
+    get "sign_up", to: "users#new"
+    resources :users, only: %i[index create]
   end
 
   resources :spaces, param: :hashid, shallow: true do

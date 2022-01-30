@@ -14,7 +14,7 @@ RSpec.describe "student users", type: :system do
   end
 
   describe "sign up" do
-    let(:path) { new_students_user_path }
+    let(:path) { students_sign_up_path }
     let(:student_profile_params) { build :student_profile }
 
     it "creates new user and signs in" do

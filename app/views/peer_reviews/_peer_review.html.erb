@@ -6,7 +6,7 @@
     </div>
     <div class="horizontal">
       <% if peer_review.status.doing? %>
-        <%= render "students/users/new_link", peer_review: %>
+        <%= render "students/sessions/new_link" %>
         <%= render "peer_reviews/participations/new_link", peer_review: %>
       <% end %>
       <%= render "edit_link", peer_review: %>

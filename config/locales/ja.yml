@@ -71,6 +71,13 @@ ja:
         title: "生徒アカウント一覧"
       new:
         title: "生徒登録"
+    sessions:
+      new:
+        title: "生徒ログイン"
+        sign_in: "ログイン"
+        sign_up: "新規登録"
+        failed_to_sign_in: "ログインに失敗しました。"
+        or: "もしくは"
   spaces:
     index:
       title: "スペース一覧"
