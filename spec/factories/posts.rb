@@ -4,13 +4,10 @@ FactoryBot.define do
     content { Faker::Lorem.paragraph }
     published { false }
     user
+    space
 
     trait :published do
       published { true }
-    end
-
-    trait :with_space do
-      space { build :space }
     end
   end
 end

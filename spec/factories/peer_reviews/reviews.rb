@@ -6,5 +6,8 @@ FactoryBot.define do
     composition { Faker::Number.between from: 1, to: 5 }
     growth { Faker::Number.between from: 1, to: 5 }
     comment { Faker::Lorem.paragraph }
+    peer_review
+    association :reviewer_participation, factory: :peer_reviews_participation
+    association :reviewee_participation, factory: :peer_reviews_participation
   end
 end
