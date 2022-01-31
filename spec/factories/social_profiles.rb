@@ -7,6 +7,7 @@ FactoryBot.define do
     provider { google[:provider] }
     uid { google[:uid] }
     email { google[:info][:email] }
+
     user
   end
 end
