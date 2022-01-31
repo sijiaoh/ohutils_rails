@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "peer_reviews/participations", type: :system do
   let(:peer_review_user) { create :user }
-  let(:peer_review) { create :peer_review, :with_space, user: peer_review_user }
+  let(:peer_review) { create :peer_review, user: peer_review_user }
   let(:participation) { build :peer_reviews_participation, user: current_user, peer_review: }
 
   include_context "when signed in"

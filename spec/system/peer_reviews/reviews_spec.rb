@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "peer_reviews/reviews", type: :system do
   let(:peer_review_user) { create :user }
-  let(:peer_review) { create :peer_review, :with_space, user: peer_review_user }
+  let(:peer_review) { create :peer_review, user: peer_review_user }
   let(:reviewer) { create :user }
   let!(:reviewer_participation) { create :peer_reviews_participation, peer_review:, user: reviewer }
   let(:reviewee) { create :user }
