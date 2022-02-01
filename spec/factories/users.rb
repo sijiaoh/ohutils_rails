@@ -7,5 +7,11 @@ FactoryBot.define do
         user.add_role :admin
       end
     end
+
+    trait :student do
+      after :create do |user|
+        user.add_role :student
+      end
+    end
   end
 end
