@@ -13,8 +13,9 @@ RSpec.describe "authentication", type: :system do
       check User.human_attribute_name(:terms_of_service)
 
       expect do
-        click_on I18n.t("helpers.submit.create")
-        expect(page).not_to have_current_path sign_up_path
+        should_change_current_path do
+          click_on I18n.t("helpers.submit.create")
+        end
       end.to change(User, :count).by(1).and change(SocialProfile, :count).by(1)
 
       user = User.first

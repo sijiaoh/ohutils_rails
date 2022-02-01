@@ -46,8 +46,9 @@ RSpec.describe "Posts", type: :system do
       fill_in to_label(:content), with: post.content
       check_published
 
-      click_on I18n.t "helpers.submit.create"
-      expect(page).not_to have_current_path path
+      should_change_current_path do
+        click_on I18n.t "helpers.submit.create"
+      end
 
       attributes = %i[title content published]
       expect(Post.first.slice(*attributes)).to eq post.slice(*attributes)
@@ -90,8 +91,9 @@ RSpec.describe "Posts", type: :system do
       visit path
 
       expect do
-        click_on I18n.t("destroy")
-        expect(page).not_to have_current_path path
+        should_change_current_path do
+          click_on I18n.t("destroy")
+        end
       end.to change(Post, :count).by(-1)
     end
   end
