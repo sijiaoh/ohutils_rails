@@ -18,7 +18,8 @@ module Students
       @student_user = User.create_student student_user_params_for_create
 
       if @student_user.persisted?
-        sign_in_and_redirect @student_user, event: :authentication
+        sign_in @student_user
+        redirect_to @student_user
       else
         @error_messages = @student_user.errors.full_messages + @student_user.student_profile.errors.full_messages
         render :new, status: :unprocessable_entity

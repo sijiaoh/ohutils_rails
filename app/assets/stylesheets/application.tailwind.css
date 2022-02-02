@@ -63,6 +63,10 @@
     @apply pagination-base border;
   }
 
+  .warn-box {
+    @apply p-4 bg-yellow-100 border rounded-xl;
+  }
+
   .post-card {
     @apply overflow-hidden;
   }
