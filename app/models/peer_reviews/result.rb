@@ -5,7 +5,7 @@ module PeerReviews
     def initialize(user, peer_review)
       @reviews = user.received_peer_reviews_reviews.where(peer_review:)
 
-      PeerReviews::Review::SCORE_KEYS.each { |key| send "#{key}=", 0 }
+      PeerReviews::Review::SCORE_KEYS.each { |key| public_send "#{key}=", 0 }
 
       calc_average_scores
     end
@@ -21,12 +21,12 @@ module PeerReviews
 
       @reviews.each do |review|
         PeerReviews::Review::SCORE_KEYS.each do |key|
-          send("#{key}=", send(key) + review[key])
+          public_send("#{key}=", public_send(key) + review[key])
         end
       end
 
       PeerReviews::Review::SCORE_KEYS.each do |key|
-        send("#{key}=", send(key).to_f / @reviews.length)
+        public_send("#{key}=", public_send(key).to_f / @reviews.length)
       end
     end
   end

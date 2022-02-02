@@ -23,7 +23,7 @@ RSpec.describe "peer_reviews/results", type: :system do
       visit peer_review_path(peer_review)
 
       PeerReviews::Review::SCORE_KEYS.each do |key|
-        average_score = reviews.sum { |review| review.send(key) }.fdiv(reviews.length)
+        average_score = reviews.sum { |review| review.public_send(key) }.fdiv(reviews.length)
         expect(page).to have_text average_score
       end
 

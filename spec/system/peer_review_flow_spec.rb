@@ -10,19 +10,19 @@ RSpec.describe "Peer reviews", type: :system do # rubocop:disable RSpec/Multiple
 
   def user_to(label)
     reset_session!
-    sign_in send(label)
+    sign_in public_send(label)
   end
 
   def fill_in_review_attributes(params)
     [*PeerReviews::Review::SCORE_KEYS, :comment].each do |key|
-      fill_in PeerReviews::Review.human_attribute_name(key), with: params.send(key)
+      fill_in PeerReviews::Review.human_attribute_name(key), with: params.public_send(key)
     end
   end
 
   def check_result_display_on_page(user, peer_review)
     result = PeerReviews::Result.new user, peer_review
     PeerReviews::Review::SCORE_KEYS.each do |key|
-      expect(page).to have_text result.send(key)
+      expect(page).to have_text result.public_send(key)
     end
     result.comments.each do |comment|
       expect(page).to have_text comment
