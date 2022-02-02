@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "peer_reviews/reviews", type: :system do
+  include PeerReviews::ReviewsSupport
+
   let(:peer_review_user) { create :user }
   let(:peer_review) { create :peer_review, user: peer_review_user }
   let(:reviewer) { create :user }
@@ -46,17 +48,9 @@ RSpec.describe "peer_reviews/reviews", type: :system do
     it "creates new review", js: true do
       visit peer_review_path(peer_review)
       click_on I18n.t "peer_reviews.reviews.new.title"
-      expect(page).to have_current_path path
 
-      fill_in to_label(:fun), with: review.fun
-      fill_in to_label(:technical), with: review.technical
-      fill_in to_label(:creativity), with: review.creativity
-      fill_in to_label(:composition), with: review.composition
-      fill_in to_label(:growth), with: review.growth
-      fill_in to_label(:comment), with: review.comment
-
-      click_on I18n.t "helpers.submit.create"
-      expect(page).not_to have_current_path path
+      fill_in_review_attributes review
+      should_change_current_path { click_on I18n.t "helpers.submit.create" }
 
       attributes = [*PeerReviews::Review::SCORE_KEYS, :comment]
       expect(PeerReviews::Review.first.slice(*attributes)).to eq review.slice(*attributes)
@@ -75,15 +69,8 @@ RSpec.describe "peer_reviews/reviews", type: :system do
     it "change existing review" do
       visit path
 
-      fill_in to_label(:fun), with: review_params.fun
-      fill_in to_label(:technical), with: review_params.technical
-      fill_in to_label(:creativity), with: review_params.creativity
-      fill_in to_label(:composition), with: review_params.composition
-      fill_in to_label(:growth), with: review_params.growth
-      fill_in to_label(:comment), with: review_params.comment
-
-      click_on I18n.t "helpers.submit.update"
-      expect(page).to have_current_path peer_reviews_review_path(review)
+      fill_in_review_attributes review_params
+      should_change_current_path { click_on I18n.t "helpers.submit.update" }
 
       attributes = [*PeerReviews::Review::SCORE_KEYS, :comment]
       expect(

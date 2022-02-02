@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Peer reviews", type: :system do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  include PeerReviews::ReviewsSupport
+
   let(:space) { create :space }
   let(:peer_review_params) { build :peer_review }
   let(:admin) { create :user, :admin }
@@ -11,12 +13,6 @@ RSpec.describe "Peer reviews", type: :system do # rubocop:disable RSpec/Multiple
   def user_to(label)
     reset_session!
     sign_in public_send(label)
-  end
-
-  def fill_in_review_attributes(params)
-    [*PeerReviews::Review::SCORE_KEYS, :comment].each do |key|
-      fill_in PeerReviews::Review.human_attribute_name(key), with: params.public_send(key)
-    end
   end
 
   def check_result_display_on_page(user, peer_review)
