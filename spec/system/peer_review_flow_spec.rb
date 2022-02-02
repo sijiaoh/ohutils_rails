@@ -14,14 +14,14 @@ RSpec.describe "Peer reviews", type: :system do # rubocop:disable RSpec/Multiple
   end
 
   def fill_in_review_attributes(params)
-    %i[fun technical creativity composition growth comment].each do |key|
+    [*PeerReviews::Review::SCORE_KEYS, :comment].each do |key|
       fill_in PeerReviews::Review.human_attribute_name(key), with: params.send(key)
     end
   end
 
   def check_result_display_on_page(user, peer_review)
     result = PeerReviews::Result.new user, peer_review
-    PeerReviews::Result::SCORE_KEYS.each do |key|
+    PeerReviews::Review::SCORE_KEYS.each do |key|
       expect(page).to have_text result.send(key)
     end
     result.comments.each do |comment|

@@ -58,7 +58,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
       click_on I18n.t "helpers.submit.create"
       expect(page).not_to have_current_path path
 
-      attributes = %i[fun technical creativity composition growth comment]
+      attributes = [*PeerReviews::Review::SCORE_KEYS, :comment]
       expect(PeerReviews::Review.first.slice(*attributes)).to eq review.slice(*attributes)
     end
   end
@@ -85,7 +85,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
       click_on I18n.t "helpers.submit.update"
       expect(page).to have_current_path peer_reviews_review_path(review)
 
-      attributes = %i[fun technical creativity composition growth comment]
+      attributes = [*PeerReviews::Review::SCORE_KEYS, :comment]
       expect(
         PeerReviews::Review.first.slice(*attributes)
       ).to eq review_params.slice(*attributes)

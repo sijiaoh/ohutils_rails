@@ -4,7 +4,7 @@
   <%= turbo_frame_tag :result do %>
     <h2 class="bold text-2xl my-default"><%= t ".average_scores" %></h2>
 
-    <% PeerReviews::Result::SCORE_KEYS.each do |score_key| %>
+    <% PeerReviews::Review::SCORE_KEYS.each do |score_key| %>
       <div>
         <%= PeerReviews::Review.human_attribute_name score_key %>:
         <%= @result.send score_key %>
