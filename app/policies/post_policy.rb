@@ -12,7 +12,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && !user.is_student?
+    user&.is_admin?
   end
 
   def update?
@@ -25,7 +25,7 @@ class PostPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.present?
+      if user&.is_admin?
         scope.all
       else
         scope.where(published: true)
