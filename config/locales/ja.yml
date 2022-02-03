@@ -14,6 +14,7 @@ ja:
       student_profile:
         student_number: "学籍番号"
         student_number_confirmation: "学籍番号再入力"
+        password: "パスワード"
       space:
         name: "スペース名"
         display_on_home: "ホーム画面に表示"

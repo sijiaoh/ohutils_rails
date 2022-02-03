@@ -11,7 +11,7 @@ module Students
     def create
       authorize %i[students session]
       skip_policy_scope
-      exists_student_profile = StudentProfile.find_by student_profile_params
+      exists_student_profile = StudentProfile.find_from_credentials(student_profile_params)
 
       if exists_student_profile.present?
         sign_in_and_redirect exists_student_profile.user
@@ -25,7 +25,7 @@ module Students
     private
 
     def student_profile_params
-      params.require(:student_profile).permit(:student_number)
+      params.require(:student_profile).permit(:student_number, :password)
     end
   end
 end

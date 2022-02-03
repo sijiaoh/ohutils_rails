@@ -17,9 +17,15 @@ RSpec.describe "student sessions", type: :system do
       StudentProfile.human_attribute_name(:student_number),
       with: student_profile.student_number
     )
-    click_on I18n.t("students.sessions.new.sign_in")
+    fill_in(
+      StudentProfile.human_attribute_name(:password),
+      with: student_profile.password
+    )
 
-    expect(page).not_to have_current_path path
+    should_change_current_path do
+      click_on I18n.t("students.sessions.new.sign_in")
+    end
+
     expect(page).to have_button I18n.t("sign_out")
   end
 end

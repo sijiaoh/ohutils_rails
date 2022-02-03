@@ -16,6 +16,10 @@
       <%= form.label :student_number %>
       <%= form.text_field :student_number, class: "text-field" %>
     </div>
+    <div class="horizontal my-default">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "text-field" %>
+    </div>
 
     <%= form.submit t(".sign_in"), class: "button-primary my-default" %>
   <% end %>
