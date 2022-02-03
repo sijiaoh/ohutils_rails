@@ -1,0 +1,3 @@
+<% if policy(user).edit? %>
+  <%= link_to t("edit"), [:edit, user], class: "button-primary" %>
+<% end %>

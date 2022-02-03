@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete "sign_out", to: "sessions#destroy"
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  resources :users, param: :hashid, only: %i[index show create]
+  resources :users, param: :hashid, only: %i[index show create edit update]
   namespace :students do
     get "sign_in", to: "sessions#new"
     post "sign_in", to: "sessions#create"

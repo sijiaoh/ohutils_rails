@@ -69,6 +69,8 @@ ja:
       title: "プロフィール"
     new:
       title: "ユーザー登録"
+    edit:
+      title: "ユーザー編集"
     user:
       please_save_bellow_credentials: "ログインには以下の情報が必要です。<br>メモやスクリーンショットをとって厳重に保存してください。"
   students:

@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     !Rails.env.production?
   end
 
+  def update?
+    user&.is_admin? || user == record
+  end
+
   class Scope < Scope
     def resolve
       if user&.is_admin?

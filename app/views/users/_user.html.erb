@@ -1,7 +1,8 @@
 <div id="<%= dom_id user %>">
-  <h2 class="font-bold my-default text-2xl"><%= @user.name %></h2>
+  <h2 class="font-bold my-default text-2xl"><%= user.name %></h2>
 
-  <% if @user.student_profile.present? %>
+  <% student_profile = user.student_profile %>
+  <% if student_profile.present? %>
     <div class="vertical my-default">
       <div class="warn-box">
         <%== t ".please_save_bellow_credentials" %>
@@ -10,11 +11,11 @@
       <div class="vertical">
         <div>
           <%= StudentProfile.human_attribute_name :student_number %>
-          <%= @user.student_profile.student_number %>
+          <%= student_profile.student_number %>
         </div>
         <div>
           <%= t "password" %>
-          <%= @user.student_profile.password %>
+          <%= student_profile.password %>
         </div>
       </div>
     </div>

@@ -1,7 +1,12 @@
 <div>
-  <h1 class="title my-default"><%= t ".title" %></h1>
+  <div class="flex justify-between my-default">
+    <h1 class="title my-default"><%= t ".title" %></h1>
 
-  <%= render "back_to_index_link" %>
+    <div class="horizontal">
+      <%= render "edit_link", user: @user %>
+      <%= render "back_to_index_link" %>
+    </div>
+  </div>
 
   <%= render @user %>
 </div>

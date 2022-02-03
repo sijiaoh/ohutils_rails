@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :store_user_location!, only: %i[new]
 
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: %i[show edit update]
   before_action :set_omniauth_data, only: %i[new create]
 
   def index
@@ -15,8 +15,10 @@ class UsersController < ApplicationController
     skip_policy_scope
   end
 
+  def edit; end
+
   def create
-    @user = authorize User.build_with_social_profile(user_params, @omniauth_data)
+    @user = authorize User.build_with_social_profile(user_create_params, @omniauth_data)
     skip_policy_scope
 
     if @user.save
@@ -26,14 +28,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_update_params)
+      redirect_to @user, notice: notice_message(User)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_user
     @user = authorize policy_scope(User).find_by!(hashid: params[:hashid])
   end
 
-  def user_params
+  def user_create_params
     params.require(:user).permit(:name, :terms_of_service)
+  end
+
+  def user_update_params
+    params.require(:user).permit(:name)
   end
 
   def set_omniauth_data
