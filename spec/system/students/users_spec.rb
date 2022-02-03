@@ -37,7 +37,7 @@ RSpec.describe "student users", type: :system do
       end.to change(User, :count).by(1)
       expect(User.first).to be_is_student
 
-      expect(page).to have_text User.first.password
+      expect(page).to have_text User.first.student_profile.password
     end
   end
 

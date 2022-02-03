@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "Posts", type: :system do
   let(:space) { create :space }
   let(:post) { build :post, user: current_user, space: }
+  let(:current_user) { create :user, :admin }
 
   def to_label(attribute)
     Post.human_attribute_name attribute
@@ -16,6 +17,10 @@ RSpec.describe "Posts", type: :system do
     end
   end
 
+  before do
+    sign_in current_user
+  end
+
   describe "index" do
     subject(:path) { space_posts_path space }
 
@@ -24,8 +29,6 @@ RSpec.describe "Posts", type: :system do
 
   describe "show" do
     subject(:path) { post_path post }
-
-    include_context "when signed in"
 
     before do
       post.save!
@@ -36,8 +39,6 @@ RSpec.describe "Posts", type: :system do
 
   describe "new" do
     subject(:path) { new_space_post_path space }
-
-    include_context "when signed in"
 
     it "creates new post" do
       visit path
@@ -60,8 +61,6 @@ RSpec.describe "Posts", type: :system do
 
     let(:existing_post) { create :post, user: current_user, space:, published: !post.published }
 
-    include_context "when signed in"
-
     it "change existing post" do
       visit path
 
@@ -80,8 +79,6 @@ RSpec.describe "Posts", type: :system do
 
   describe "destroy" do
     subject(:path) { post_path post }
-
-    include_context "when signed in"
 
     before do
       post.save!

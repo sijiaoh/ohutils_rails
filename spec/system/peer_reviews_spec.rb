@@ -3,9 +3,14 @@ require "rails_helper"
 RSpec.describe "Peer reviews", type: :system do
   let(:space) { create :space }
   let(:peer_review) { build :peer_review, user: current_user, space: }
+  let(:current_user) { create :user, :admin }
 
   def to_label(attribute)
     PeerReview.human_attribute_name attribute
+  end
+
+  before do
+    sign_in current_user
   end
 
   describe "index" do
@@ -17,8 +22,6 @@ RSpec.describe "Peer reviews", type: :system do
   describe "show" do
     subject(:path) { peer_review_path peer_review }
 
-    include_context "when signed in"
-
     before do
       peer_review.save!
     end
@@ -28,8 +31,6 @@ RSpec.describe "Peer reviews", type: :system do
 
   describe "new" do
     subject(:path) { new_space_peer_review_path space }
-
-    include_context "when signed in"
 
     it "creates new peer review" do
       visit path
@@ -50,8 +51,6 @@ RSpec.describe "Peer reviews", type: :system do
 
     let(:existing_peer_review) { create :peer_review, user: current_user, space: }
 
-    include_context "when signed in"
-
     it "change existing peer review" do
       visit path
 
@@ -69,8 +68,6 @@ RSpec.describe "Peer reviews", type: :system do
 
   describe "destroy" do
     let(:path) { peer_review_path peer_review }
-
-    include_context "when signed in"
 
     before do
       peer_review.save!
