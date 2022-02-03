@@ -4,12 +4,10 @@
   </div>
   <div>
     <% if user.present? %>
-      <%= button_to(
-        t("sign_out"),
-        sign_out_path,
-        method: :delete,
-        class: "button-primary",
-      ) %>
+      <div class="horizontal">
+        <%= link_to(t("users.show.title"), current_user, class: "button-primary") %>
+        <%= button_to(t("sign_out"), sign_out_path, method: :delete, class: "button-primary") %>
+      </div>
     <% elsif !Rails.env.production? %>
       <%= link_to t("sessions.new.title"), sign_in_path, class: "button-primary" %>
     <% end %>
