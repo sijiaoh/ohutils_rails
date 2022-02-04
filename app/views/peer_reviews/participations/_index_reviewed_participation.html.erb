@@ -9,9 +9,11 @@
         reviewee_participation: participation,
       )
     ) %>
-    <div class="horizontal">
-      <%= render "show_link", participation: %>
-      <%= render "edit_link", participation: %>
-    </div>
+    <% if current_user.is_admin? %>
+      <div class="horizontal">
+        <%= render "show_link", participation: %>
+        <%= render "edit_link", participation: %>
+      </div>
+    <% end %>
   </div>
 </div>
