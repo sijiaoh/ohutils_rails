@@ -4,9 +4,8 @@ ja:
       space: "スペース"
       post: "投稿"
       peer_review: "相互評価"
-      peer_reviews:
-        participation: "相互評価参加"
-        review: "評価"
+      peer_reviews/participation: "相互評価参加"
+      peer_reviews/review: "評価"
     attributes:
       user:
         name: "名前"
@@ -124,6 +123,7 @@ ja:
       index:
         title: "評価一覧"
       new:
+        link: "評価する"
         title: "%{user_name}を評価"
         comment_by_reviewee: "%{user_name}からのコメント"
       edit:
