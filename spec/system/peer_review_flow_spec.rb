@@ -27,7 +27,7 @@ RSpec.describe "Peer reviews", type: :system do # rubocop:disable RSpec/Multiple
 
   def review_to_participation(peer_review, review_params)
     visit peer_review_path(peer_review)
-    click_on I18n.t("peer_reviews.reviews.new.title"), match: :first
+    click_on I18n.t("peer_reviews.reviews.new.link"), match: :first
 
     fill_in_review_attributes(review_params)
     should_change_current_path { click_on I18n.t("helpers.submit.create") }

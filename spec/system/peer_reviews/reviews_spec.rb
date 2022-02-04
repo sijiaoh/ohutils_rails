@@ -47,7 +47,7 @@ RSpec.describe "peer_reviews/reviews", type: :system do
 
     it "creates new review", js: true do
       visit peer_review_path(peer_review)
-      click_on I18n.t "peer_reviews.reviews.new.title"
+      click_on I18n.t "peer_reviews.reviews.new.link"
 
       fill_in_review_attributes review
       should_change_current_path { click_on I18n.t "helpers.submit.create" }
