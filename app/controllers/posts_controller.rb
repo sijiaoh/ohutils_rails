@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  include SpaceScoped
+
   before_action :set_space, only: %i[index new create]
   before_action :set_post, only: %i[show edit update destroy]
 
@@ -44,10 +46,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def set_space
-    @space = authorize policy_scope(Space).find_by!(hashid: params[:space_hashid]), :show?
-  end
 
   def set_post
     @post = authorize policy_scope(Post).find_by!(hashid: params[:hashid])

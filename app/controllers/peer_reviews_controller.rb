@@ -1,4 +1,6 @@
 class PeerReviewsController < ApplicationController
+  include SpaceScoped
+
   before_action :set_space, only: %i[index new create]
   before_action :set_peer_review, only: %i[show edit update destroy]
 
@@ -42,10 +44,6 @@ class PeerReviewsController < ApplicationController
   end
 
   private
-
-  def set_space
-    @space = authorize policy_scope(Space).find_by!(hashid: params[:space_hashid]), :show?
-  end
 
   def set_peer_review
     @peer_review = authorize policy_scope(PeerReview).find_by!(hashid: params[:hashid])
