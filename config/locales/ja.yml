@@ -124,7 +124,8 @@ ja:
       index:
         title: "評価一覧"
       new:
-        title: "評価追加"
+        title: "%{user_name}を評価"
+        comment_by_reviewee: "%{user_name}からのコメント"
       edit:
         title: "評価編集"
     results:
