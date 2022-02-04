@@ -1,7 +1,7 @@
 class StudentProfile < ApplicationRecord
   belongs_to :user
 
-  validates :student_number, presence: true, confirmation: true
+  validates :student_number, presence: true, confirmation: true, uniqueness: true
 
   before_create :generate_password
 
