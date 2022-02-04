@@ -7,11 +7,12 @@ export default class extends Controller {
 
   connect() {
     // Hide pure content from DebTools.
-    this._content = this.contentValue;
+    this.content = this.contentValue;
     this.contentValue = "";
 
     this.observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
+      if (this.element.innerHTML != "") return;
       if (this.rendered != null) return;
       this.rendered = true;
 
@@ -34,7 +35,7 @@ export default class extends Controller {
     };
 
     // c++ in Prism.js is cpp.
-    const content = this._content.replace("```c++", "```cpp");
+    const content = this.content.replace("```c++", "```cpp");
 
     this.element.innerHTML = marked(content, {
       breaks: true,
@@ -43,9 +44,5 @@ export default class extends Controller {
 
     mermaid.init(".mermaid");
     window.Prism.highlightAllUnder(this.element);
-  }
-
-  restoreContentValue() {
-    this.contentValue = this._content;
   }
 }
