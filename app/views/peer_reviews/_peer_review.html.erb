@@ -5,8 +5,8 @@
       <%= peer_review.status.text %>
     </div>
     <div class="horizontal">
+      <%= render "students/sessions/new_link" %>
       <% if peer_review.status.doing? %>
-        <%= render "students/sessions/new_link" %>
         <%= render "peer_reviews/participations/new_link", peer_review: %>
       <% end %>
       <%= render "edit_link", peer_review: %>
