@@ -10,5 +10,9 @@ module PeerReviews
 
     has_one :reviewer, through: :reviewer_participation, source: :user
     has_one :reviewee, through: :reviewee_participation, source: :user
+
+    SCORE_KEYS.each do |key|
+      validates key, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+    end
   end
 end
