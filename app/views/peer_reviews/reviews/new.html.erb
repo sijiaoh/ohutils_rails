@@ -8,7 +8,7 @@
       <%= t(".comment_by_reviewee", user_name: @participation.user.name) %>:
     </div>
     <div class="ml-2">
-      <%= @participation.comment %>
+      <%= simple_format @participation.comment %>
     </div>
   </div>
 

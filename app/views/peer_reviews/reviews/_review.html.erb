@@ -23,6 +23,6 @@
   </div>
   <div class="horizontal my-default">
     <div class="font-medium"><%= PeerReviews::Review.human_attribute_name :comment %>:</div>
-    <%= review.comment %>
+    <%= simple_format review.comment %>
   </div>
 </div>

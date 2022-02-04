@@ -15,7 +15,7 @@
 
     <% @result.comments.each do |comment| %>
       <div class="my-default">
-        <%= comment %>
+        <%= simple_format comment %>
       </div>
     <% end %>
   <% end %>
