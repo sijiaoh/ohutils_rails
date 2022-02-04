@@ -4,7 +4,7 @@
     <%= render "new_link", space: @space %>
   </div>
 
-  <turbo-frame id="posts">
+  <%= turbo_frame_tag :posts do %>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
       <% @posts.each do |post| %>
         <div class="mx-auto">
@@ -16,5 +16,5 @@
     <div class="my-8">
       <%= paginate @posts, params: { controller: :spaces, action: :show, hashid: @space.hashid, space_hashid: nil } %>
     </div>
-  </turbo-frame>
+  <% end %>
 </div>

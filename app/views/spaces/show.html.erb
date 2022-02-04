@@ -5,10 +5,10 @@
       <%= render "posts/new_link", space: @space %>
     </div>
 
-    <turbo-frame
-      id="posts"
-      src="<%= space_posts_path @space, page: params[:page] %>"
-      target="_top"
-    ></turbo-frame>
+    <%= turbo_frame_tag(
+      :posts,
+      src: [@space, :posts, {page: params[:page]}],
+      target: :_top
+    ) %>
   <% end %>
 </div>
