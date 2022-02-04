@@ -39,6 +39,7 @@ RSpec.describe "Peer reviews", type: :system do # rubocop:disable RSpec/Multiple
     # 相互評価作成。
     user_to :admin
     visit space_path(space)
+    click_on I18n.t("peer_reviews.index.title")
     click_on I18n.t("peer_reviews.new.title")
 
     fill_in PeerReview.human_attribute_name(:title), with: peer_review_params.title

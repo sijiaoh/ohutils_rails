@@ -1,4 +1,10 @@
 <div id="<%= dom_id space %>">
+  <div class="scaffold-buttons my-default">
+    <%= render "spaces/edit_link", space: space %>
+    <%= render "spaces/destroy_button", space: space %>
+    <%= render "spaces/back_to_index_link" %>
+  </div>
+
   <div class="horizontal items-end my-default gap-3">
     <h1 class="title"><%= title space.name %></h1>
 
@@ -7,29 +13,12 @@
     <% end %>
   </div>
 
-  <div class="my-8 mx-4">
-    <div class="flex justify-between items-center my-default">
-      <h2 class="font-bold text-2xl"><%= t "posts.index.title" %></h2>
-      <%= render "posts/new_link", space: %>
-    </div>
-
-    <turbo-frame
-      id="posts"
-      src="<%= space_posts_path space, page: params[:page] %>"
-      target="_top"
-    ></turbo-frame>
+  <div class="horizontal">
+    <%= render "posts/index_link", space: %>
+    <%= render "peer_reviews/index_link", space: %>
   </div>
 
   <div class="my-8 mx-4">
-    <div class="flex justify-between items-center my-default">
-      <h2 class="font-bold text-2xl"><%= t "peer_reviews.index.title" %></h2>
-      <%= render "peer_reviews/new_link", space: %>
-    </div>
-
-    <turbo-frame
-      id="peer_reviews"
-      src="<%= space_peer_reviews_path space, page: params[:page] %>"
-      target="_top"
-    ></turbo-frame>
+    <%= yield %>
   </div>
 </div>

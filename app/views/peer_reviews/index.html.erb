@@ -1,12 +1,12 @@
 <div>
-  <div class="flex justify-between items-center">
-    <h1 class="title my-default"><%= title t ".title" %></h1>
-    <%= render "new_link", space: @space %>
-  </div>
+  <%= render @space do %>
+    <div class="flex justify-between items-center my-default">
+      <h2 class="font-bold text-2xl"><%= t "peer_reviews.index.title" %></h2>
+      <%= render "peer_reviews/new_link", space: @space %>
+    </div>
 
-  <turbo-frame id="peer_reviews">
     <%= render partial: "index_peer_review", collection: @peer_reviews, as: :peer_review %>
 
     <%= paginate @peer_reviews %>
-  </turbo-frame>
+  <% end %>
 </div>
