@@ -1,8 +1,11 @@
 module PeerReviews
   class ReviewsController < ApplicationController
+    include PeerReviewScoped
+
     before_action :set_peer_review, only: %i[index new create]
+    before_action :set_review_and_peer_review, only: %i[show edit update destroy]
+    before_action :redirect_to_peer_review_if_done
     before_action :set_participation, only: %i[new create]
-    before_action :set_review, only: %i[show edit update destroy]
 
     def index
       @reviews = authorize policy_scope(Review).page params[:page]
@@ -43,18 +46,14 @@ module PeerReviews
 
     private
 
-    def set_peer_review
-      @peer_review = policy_scope(PeerReview).find_by!(hashid: params[:peer_review_hashid])
-      authorize @peer_review, :show?
-    end
-
     def set_participation
       @participation = policy_scope(@peer_review.participations).find_by!(hashid: params[:participation_hashid])
       authorize @participation, :show?
     end
 
-    def set_review
+    def set_review_and_peer_review
       @review = authorize policy_scope(Review).find_by!(hashid: params[:hashid])
+      @peer_review = @review.peer_review
     end
 
     def review_params

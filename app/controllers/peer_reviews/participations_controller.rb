@@ -1,7 +1,10 @@
 module PeerReviews
   class ParticipationsController < ApplicationController
+    include PeerReviewScoped
+
     before_action :set_peer_review, only: %i[index new create]
-    before_action :set_participation, only: %i[show edit update destroy]
+    before_action :set_participation_and_peer_review, only: %i[show edit update destroy]
+    before_action :redirect_to_peer_review_if_done
 
     def index
       @self_participation = self_participation
@@ -74,13 +77,9 @@ module PeerReviews
       policy_scope(@peer_review.participations).includes([:user])
     end
 
-    def set_peer_review
-      @peer_review = policy_scope(PeerReview).find_by!(hashid: params[:peer_review_hashid])
-      authorize @peer_review, :show?
-    end
-
-    def set_participation
+    def set_participation_and_peer_review
       @participation = authorize policy_scope(Participation).find_by!(hashid: params[:hashid])
+      @peer_review = @participation.peer_review
     end
 
     def participation_params
