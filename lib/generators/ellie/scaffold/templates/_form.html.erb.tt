@@ -1,5 +1,5 @@
 <%%= form_with(model: <%= model_resource_name %>, class: "contents") do |form| %>
-  <%%= render "shared/form_errors", errors: <%= singular_table_name %>.errors %>
+  <%%= render "shared/form_errors", messages: <%= singular_table_name %>.errors.full_messages %>
 
 <% attributes.each do |attribute| -%>
 <% if attribute.field_type == :check_box -%>

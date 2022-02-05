@@ -43,7 +43,8 @@
   .scaffold-buttons {
     @apply horizontal gap-3;
   }
-  .scaffold-errors {
+
+  .form-errors {
     @apply bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg;
   }
 
