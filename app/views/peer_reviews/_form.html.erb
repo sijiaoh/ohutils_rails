@@ -1,5 +1,5 @@
 <%= form_with(model: [space, peer_review], class: "contents") do |form| %>
-  <%= render "shared/form_errors", errors: peer_review.errors %>
+  <%= render "shared/form_errors", messages: peer_review.errors.full_messages %>
 
   <div class="vertical my-default">
     <%= form.label :title %>

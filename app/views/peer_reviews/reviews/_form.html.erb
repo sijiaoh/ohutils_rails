@@ -3,7 +3,7 @@
   url: [peer_review, review, { participation_hashid: participation&.hashid }],
   class: "contents"
 ) do |form| %>
-  <%= render "shared/form_errors", errors: review.errors %>
+  <%= render "shared/form_errors", messages: review.errors.full_messages %>
 
   <div class="vertical my-default">
     <%= form.label :fun %>

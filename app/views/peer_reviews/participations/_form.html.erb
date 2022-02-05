@@ -1,5 +1,5 @@
 <%= form_with(model: [peer_review, participation], class: "contents") do |form| %>
-  <%= render "shared/form_errors", errors: participation.errors %>
+  <%= render "shared/form_errors", messages: participation.errors.full_messages %>
 
   <div class="vertical my-default">
     <%= form.label :comment %>
