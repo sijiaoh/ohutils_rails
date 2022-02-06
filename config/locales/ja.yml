@@ -47,6 +47,7 @@ ja:
   detail: "詳細"
   edit: "編集"
   destroy: "削除"
+  destroy_confirm: "本当に削除しますか？\nこの操作は取り消すことができません。"
   back_to_index: "一覧に戻る"
 
   created_at: "作成日"
