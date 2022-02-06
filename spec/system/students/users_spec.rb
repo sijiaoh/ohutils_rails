@@ -29,7 +29,6 @@ RSpec.describe "student users", type: :system do
         StudentProfile.human_attribute_name(:student_number_confirmation),
         with: student_profile_params.student_number
       )
-      check User.human_attribute_name(:terms_of_service)
 
       expect do
         click_on I18n.t("helpers.submit.create")

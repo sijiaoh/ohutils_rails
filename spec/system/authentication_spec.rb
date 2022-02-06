@@ -10,7 +10,6 @@ RSpec.describe "authentication", type: :system do
       expect(page).to have_current_path sign_up_path
 
       fill_in User.human_attribute_name(:name), with: build(:user).name
-      check User.human_attribute_name(:terms_of_service)
 
       expect do
         should_change_current_path do
