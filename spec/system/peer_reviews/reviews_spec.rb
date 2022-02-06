@@ -86,11 +86,12 @@ RSpec.describe "peer_reviews/reviews", type: :system do
       review.save!
     end
 
-    it "destroys review" do
+    it "destroys review", js: true do
       visit path
 
       expect do
         click_on I18n.t("destroy")
+        page.accept_confirm I18n.t("destroy_confirm")
         expect(page).not_to have_current_path path
       end.to change(PeerReviews::Review, :count).by(-1)
     end

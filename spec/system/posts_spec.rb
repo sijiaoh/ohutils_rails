@@ -84,12 +84,13 @@ RSpec.describe "Posts", type: :system do
       post.save!
     end
 
-    it "destroys post" do
+    it "destroys post", js: true do
       visit path
 
       expect do
         should_change_current_path do
           click_on I18n.t("destroy")
+          page.accept_confirm I18n.t("destroy_confirm")
         end
       end.to change(Post, :count).by(-1)
     end

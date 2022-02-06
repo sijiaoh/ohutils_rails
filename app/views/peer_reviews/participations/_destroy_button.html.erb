@@ -1,3 +1,9 @@
 <% if policy(participation).destroy? %>
-  <%= button_to t("destroy"), participation, method: :delete, class: "button-danger" %>
+  <%= button_to(
+    t("destroy"),
+    participation,
+    method: :delete,
+    class: "button-danger",
+    form: { data: { turbo_confirm: t("destroy_confirm") } }
+  ) %>
 <% end %>

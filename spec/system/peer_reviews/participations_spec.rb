@@ -78,11 +78,12 @@ RSpec.describe "peer_reviews/participations", type: :system do
       participation.save!
     end
 
-    it "destroys participation" do
+    it "destroys participation", js: true do
       visit path
 
       expect do
         click_on I18n.t("destroy")
+        page.accept_confirm I18n.t("destroy_confirm")
         expect(page).not_to have_current_path path
       end.to change(PeerReviews::Participation, :count).by(-1)
     end

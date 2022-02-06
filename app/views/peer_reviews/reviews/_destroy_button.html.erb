@@ -1,3 +1,9 @@
 <% if policy(review).destroy? %>
-  <%= button_to t("destroy"), review, method: :delete, class: "button-danger" %>
+  <%= button_to(
+    t("destroy"),
+    review,
+    method: :delete,
+    class: "button-danger",
+    form: { data: { turbo_confirm: t("destroy_confirm") } }
+  ) %>
 <% end %>
