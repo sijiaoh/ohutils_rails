@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       namespace :peer_reviews do
         resources :participations, param: :hashid
         resources :reviews, param: :hashid
-        resource :result, only: [:show]
+        resources :results, param: :user_hashid, only: %i[index show]
       end
     end
   end

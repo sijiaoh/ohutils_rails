@@ -1,0 +1,21 @@
+<div>
+  <h1 class="title my-default"><%= title t ".title" %></h1>
+
+  <% @users.each do |user| %>
+    <div class="flex justify-between my-default">
+      <%= user.name %>
+      <div>
+        <%= link_to(
+          t("detail"),
+          [:peer_reviews, :result, { user_hashid: user.hashid, peer_review_hashid: @peer_review.hashid }],
+          class: "button-primary"
+        ) %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="my-default">
+    <%= paginate @users %>
+  </div>
+</div>
+

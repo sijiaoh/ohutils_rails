@@ -130,6 +130,8 @@ ja:
       edit:
         title: "評価編集"
     results:
+      index:
+        title: "リザルト一覧"
       show:
         title: "リザルト"
         average_scores: "平均点"

@@ -27,7 +27,7 @@
 
       <%= turbo_frame_tag(
         :result,
-        src: [peer_review, :peer_reviews, :result],
+        src: [:peer_reviews, :result, { user_hashid: current_user.hashid, peer_review_hashid: peer_review.hashid }],
         target: :_top
       ) %>
     <% else %>

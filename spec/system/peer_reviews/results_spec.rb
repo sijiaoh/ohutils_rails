@@ -18,9 +18,15 @@ RSpec.describe "peer_reviews/results", type: :system do
     peer_review.update status: :done
   end
 
-  describe "peer_reviews/show" do
+  describe "peer_reviews/results/index" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    let(:path) { peer_review_peer_reviews_results_path(peer_review, { user_hashid: reviewee.hashid }) }
+
+    include_examples "simple visit test"
+  end
+
+  describe "peer_reviews/results/show" do
     it "displays result" do
-      visit peer_review_path(peer_review)
+      visit peer_reviews_result_path({ user_hashid: reviewee.hashid, peer_review_hashid: peer_review.hashid })
 
       PeerReviews::Review::SCORE_KEYS.each do |key|
         average_score = reviews.sum { |review| review.public_send(key) }.fdiv(reviews.length)
