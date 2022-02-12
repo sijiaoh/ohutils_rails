@@ -1,9 +1,11 @@
 module PeerReviews
   class Result
-    attr_accessor(*PeerReviews::Review::SCORE_KEYS, :user)
+    attr_accessor(*PeerReviews::Review::SCORE_KEYS, :user, :peer_review)
 
     def initialize(user, peer_review)
       self.user = user
+      self.peer_review = peer_review
+
       @reviews = user.received_peer_reviews_reviews.where(peer_review:)
 
       PeerReviews::Review::SCORE_KEYS.each { |key| public_send "#{key}=", 0 }
