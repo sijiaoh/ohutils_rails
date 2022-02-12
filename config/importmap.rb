@@ -11,5 +11,6 @@ pin_all_from "vendor/javascript/tinymce_languages", under: "tinymce_languages"
 
 pin "google_analytics", to: "google_analytics.js"
 
+pin "autosize", to: "https://ga.jspm.io/npm:autosize@5.0.1/dist/autosize.esm.js"
 pin "marked", to: "https://ga.jspm.io/npm:marked@4.0.10/lib/marked.esm.js"
 pin "mermaid", to: "https://ga.jspm.io/npm:mermaid@8.13.8/dist/mermaid.esm.min.mjs"

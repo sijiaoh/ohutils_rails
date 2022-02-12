@@ -1,9 +1,13 @@
 <%= form_with(model: [peer_review, participation], class: "contents") do |form| %>
   <%= render "shared/form_errors", messages: participation.errors.full_messages %>
 
-  <div class="vertical my-default">
+  <div class="vertical my-default" data-controller="text-area-autosize">
     <%= form.label :comment %>
-    <%= form.text_area :comment, class: "text-area" %>
+    <%= form.text_area(
+      :comment,
+      class: "text-area",
+      data: { "text-area-autosize-target": "textArea" }
+    ) %>
   </div>
 
   <%= form.submit class: "button-primary my-default" %>
