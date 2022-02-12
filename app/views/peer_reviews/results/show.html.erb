@@ -7,7 +7,7 @@
     <% PeerReviews::Review::SCORE_KEYS.each do |score_key| %>
       <div>
         <%= PeerReviews::Review.human_attribute_name score_key %>:
-        <%= @result.public_send score_key %>
+        <%= @result.public_send(score_key).round(2) %>
       </div>
     <% end %>
 
