@@ -1,4 +1,4 @@
-<% if policy([:peer_reviews, :result]).index? %>
+<% if policy(peer_review).show? && policy([:peer_reviews, :result]).index? %>
   <%= link_to(
     t("peer_reviews.results.index.title"),
     [peer_review, :peer_reviews, :results],
