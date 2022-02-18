@@ -3,15 +3,6 @@
     <%= title t(".title", user_name: @participation.user.name) %>
   </h1>
 
-  <div class="vertical">
-    <div class="font-bold">
-      <%= t(".comment_by_reviewee", user_name: @participation.user.name) %>:
-    </div>
-    <div class="ml-2">
-      <%= simple_format @participation.comment %>
-    </div>
-  </div>
-
   <%= render(
     "form",
     peer_review: @peer_review,

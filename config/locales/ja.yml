@@ -126,9 +126,10 @@ ja:
       new:
         link: "評価する"
         title: "%{user_name}を評価"
-        comment_by_reviewee: "%{user_name}からのコメント"
       edit:
         title: "評価編集"
+      form:
+        comment_by_reviewee: "%{user_name}からのコメント"
     results:
       index:
         title: "リザルト一覧"

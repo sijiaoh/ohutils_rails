@@ -1,3 +1,12 @@
+<div class="vertical">
+  <div class="font-bold">
+    <%= t(".comment_by_reviewee", user_name: review.reviewee_participation.user.name) %>:
+  </div>
+  <div class="ml-2">
+    <%= simple_format review.reviewee_participation.comment %>
+  </div>
+</div>
+
 <%= form_with(
   model: review,
   url: [peer_review, review, { participation_hashid: participation&.hashid }],

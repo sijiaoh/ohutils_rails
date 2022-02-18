@@ -15,6 +15,7 @@ module PeerReviews
 
     def new
       @review = authorize Review.new
+      @review.reviewee_participation = @participation
       skip_policy_scope
     end
 
